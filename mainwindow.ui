@@ -27,63 +27,63 @@
      <item>
       <layout class="QGridLayout" name="gridLayout">
        <item row="1" column="0">
-        <widget class="QLabel" name="label_2">
+        <widget class="QLabel" name="label_nachname">
          <property name="text">
           <string>Nachname</string>
          </property>
         </widget>
        </item>
        <item row="5" column="0">
-        <widget class="QLabel" name="label_6">
+        <widget class="QLabel" name="label_plz">
          <property name="text">
           <string>PLZ</string>
          </property>
         </widget>
        </item>
        <item row="6" column="0">
-        <widget class="QLabel" name="label_7">
+        <widget class="QLabel" name="label_stadt">
          <property name="text">
           <string>Stadt</string>
          </property>
         </widget>
        </item>
        <item row="0" column="0">
-        <widget class="QLabel" name="label">
+        <widget class="QLabel" name="label_vorname">
          <property name="text">
           <string>Vorname</string>
          </property>
         </widget>
        </item>
        <item row="3" column="0">
-        <widget class="QLabel" name="label_5">
+        <widget class="QLabel" name="label_email">
          <property name="text">
           <string>E-Mail</string>
          </property>
         </widget>
        </item>
        <item row="4" column="0">
-        <widget class="QLabel" name="label_8">
+        <widget class="QLabel" name="label_strasse">
          <property name="text">
           <string>Straße</string>
          </property>
         </widget>
        </item>
        <item row="2" column="0">
-        <widget class="QLabel" name="label_4">
+        <widget class="QLabel" name="label_geburtsdatum">
          <property name="text">
           <string>Geburtsdatum</string>
          </property>
         </widget>
        </item>
        <item row="7" column="0">
-        <widget class="QLabel" name="label_3">
+        <widget class="QLabel" name="label_land">
          <property name="text">
           <string>Land</string>
          </property>
         </widget>
        </item>
        <item row="8" column="0">
-        <widget class="QLabel" name="label_12">
+        <widget class="QLabel" name="label_organisator">
          <property name="text">
           <string>Organisator</string>
          </property>
@@ -94,35 +94,35 @@
      <item>
       <layout class="QGridLayout" name="gridLayout_2">
        <item row="2" column="0">
-        <widget class="QDateEdit" name="dateEdit"/>
+        <widget class="QDateEdit" name="dateEdit_geburtsdatum"/>
        </item>
        <item row="1" column="0">
-        <widget class="QLineEdit" name="lineEdit_2"/>
+        <widget class="QLineEdit" name="lineEdit_nachname"/>
        </item>
        <item row="5" column="0">
-        <widget class="QLineEdit" name="lineEdit_5"/>
+        <widget class="QLineEdit" name="lineEdit_plz"/>
        </item>
        <item row="6" column="0">
-        <widget class="QLineEdit" name="lineEdit_4"/>
+        <widget class="QLineEdit" name="lineEdit_stadt"/>
        </item>
        <item row="0" column="0">
-        <widget class="QLineEdit" name="lineEdit">
+        <widget class="QLineEdit" name="lineEdit_vorname">
          <property name="text">
           <string/>
          </property>
         </widget>
        </item>
        <item row="7" column="0">
-        <widget class="QLineEdit" name="lineEdit_3"/>
+        <widget class="QLineEdit" name="lineEdit_land"/>
        </item>
        <item row="4" column="0">
-        <widget class="QLineEdit" name="lineEdit_7"/>
+        <widget class="QLineEdit" name="lineEdit_strasse"/>
        </item>
        <item row="3" column="0">
-        <widget class="QLineEdit" name="lineEdit_8"/>
+        <widget class="QLineEdit" name="lineEdit_email"/>
        </item>
        <item row="8" column="0">
-        <widget class="QCheckBox" name="checkBox">
+        <widget class="QCheckBox" name="checkBox_is_organisator">
          <property name="text">
           <string/>
          </property>
@@ -132,7 +132,7 @@
      </item>
     </layout>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="button_left">
     <property name="geometry">
      <rect>
       <x>210</x>
@@ -145,7 +145,7 @@
      <string>&lt;</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="button_right">
     <property name="geometry">
      <rect>
       <x>500</x>
@@ -158,7 +158,7 @@
      <string>&gt;</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_9">
+   <widget class="QLabel" name="label_version">
     <property name="geometry">
      <rect>
       <x>310</x>
@@ -171,7 +171,7 @@
      <string>Version der Detailans.</string>
     </property>
    </widget>
-   <widget class="QTableView" name="tableView">
+   <widget class="QTableView" name="table_mitglieder">
     <property name="geometry">
      <rect>
       <x>670</x>
@@ -184,7 +184,7 @@
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="button_uebernehmen">
     <property name="geometry">
      <rect>
       <x>520</x>
@@ -197,7 +197,7 @@
      <string>übernehmen</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_4">
+   <widget class="QPushButton" name="button_abmelden">
     <property name="geometry">
      <rect>
       <x>950</x>
@@ -210,7 +210,7 @@
      <string>Abmelden</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_5">
+   <widget class="QPushButton" name="button_eigenes_pw_aendern">
     <property name="geometry">
      <rect>
       <x>788</x>
@@ -223,7 +223,7 @@
      <string>Passwort ändern</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_10">
+   <widget class="QLabel" name="label_mail_account">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -236,7 +236,7 @@
      <string>mail Adresse des aktuellen benutzer</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_11">
+   <widget class="QLabel" name="label_role">
     <property name="geometry">
      <rect>
       <x>356</x>
@@ -249,7 +249,7 @@
      <string>Rolle(HO/O)</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_6">
+   <widget class="QPushButton" name="button_mitglied_pwaendern">
     <property name="geometry">
      <rect>
       <x>40</x>
@@ -262,7 +262,7 @@
      <string>Passwort zurücksetzen</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_7">
+   <widget class="QPushButton" name="button_neues_mitglied">
     <property name="geometry">
      <rect>
       <x>50</x>
@@ -280,7 +280,7 @@
      <string>+</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_13">
+   <widget class="QLabel" name="label_geaendert_von">
     <property name="geometry">
      <rect>
       <x>200</x>
@@ -293,7 +293,7 @@
      <string>Änderung durch</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_14">
+   <widget class="QLabel" name="label_datum">
     <property name="geometry">
      <rect>
       <x>440</x>
@@ -306,7 +306,7 @@
      <string>Datum</string>
     </property>
    </widget>
-   <widget class="QScrollBar" name="verticalScrollBar">
+   <widget class="QScrollBar" name="scrollbar">
     <property name="geometry">
      <rect>
       <x>980</x>
