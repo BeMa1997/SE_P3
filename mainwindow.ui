@@ -26,45 +26,17 @@
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <layout class="QGridLayout" name="gridLayout">
-       <item row="1" column="0">
-        <widget class="QLabel" name="label_nachname">
-         <property name="text">
-          <string>Nachname</string>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="0">
+       <item row="6" column="0">
         <widget class="QLabel" name="label_plz">
          <property name="text">
           <string>PLZ</string>
          </property>
         </widget>
        </item>
-       <item row="6" column="0">
+       <item row="7" column="0">
         <widget class="QLabel" name="label_stadt">
          <property name="text">
           <string>Stadt</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="0">
-        <widget class="QLabel" name="label_vorname">
-         <property name="text">
-          <string>Vorname</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="0">
-        <widget class="QLabel" name="label_email">
-         <property name="text">
-          <string>E-Mail</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="0">
-        <widget class="QLabel" name="label_strasse">
-         <property name="text">
-          <string>Straße</string>
          </property>
         </widget>
        </item>
@@ -75,17 +47,52 @@
          </property>
         </widget>
        </item>
-       <item row="7" column="0">
+       <item row="8" column="0">
         <widget class="QLabel" name="label_land">
          <property name="text">
           <string>Land</string>
          </property>
         </widget>
        </item>
-       <item row="8" column="0">
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_email">
+         <property name="text">
+          <string>E-Mail</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="label_strasse">
+         <property name="text">
+          <string>Straße</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_nachname">
+         <property name="text">
+          <string>Nachname</string>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="0">
         <widget class="QLabel" name="label_organisator">
          <property name="text">
           <string>Organisator</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_vorname">
+         <property name="text">
+          <string>Vorname</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>Tel. Num.</string>
          </property>
         </widget>
        </item>
@@ -99,11 +106,30 @@
        <item row="1" column="0">
         <widget class="QLineEdit" name="lineEdit_nachname"/>
        </item>
-       <item row="5" column="0">
-        <widget class="QLineEdit" name="lineEdit_plz"/>
+       <item row="8" column="0">
+        <widget class="QLineEdit" name="lineEdit_land"/>
        </item>
        <item row="6" column="0">
+        <widget class="QLineEdit" name="lineEdit_plz"/>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLineEdit" name="lineEdit_email"/>
+       </item>
+       <item row="2" column="0">
+        <widget class="QDateEdit" name="dateEdit_geburtsdatum"/>
+       </item>
+       <item row="7" column="0">
         <widget class="QLineEdit" name="lineEdit_stadt"/>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLineEdit" name="lineEdit_strasse"/>
+       </item>
+       <item row="9" column="0">
+        <widget class="QCheckBox" name="checkBox_is_organisator">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
        </item>
        <item row="0" column="0">
         <widget class="QLineEdit" name="lineEdit_vorname">
@@ -112,21 +138,8 @@
          </property>
         </widget>
        </item>
-       <item row="7" column="0">
-        <widget class="QLineEdit" name="lineEdit_land"/>
-       </item>
        <item row="4" column="0">
-        <widget class="QLineEdit" name="lineEdit_strasse"/>
-       </item>
-       <item row="3" column="0">
-        <widget class="QLineEdit" name="lineEdit_email"/>
-       </item>
-       <item row="8" column="0">
-        <widget class="QCheckBox" name="checkBox_is_organisator">
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
+        <widget class="QLineEdit" name="lineEdit_tel"/>
        </item>
       </layout>
      </item>
@@ -169,19 +182,6 @@
     </property>
     <property name="text">
      <string>Version der Detailans.</string>
-    </property>
-   </widget>
-   <widget class="QTableView" name="table_mitglieder">
-    <property name="geometry">
-     <rect>
-      <x>670</x>
-      <y>130</y>
-      <width>311</width>
-      <height>511</height>
-     </rect>
-    </property>
-    <property name="sortingEnabled">
-     <bool>true</bool>
     </property>
    </widget>
    <widget class="QPushButton" name="button_uebernehmen">
@@ -229,11 +229,11 @@
       <x>30</x>
       <y>10</y>
       <width>311</width>
-      <height>17</height>
+      <height>20</height>
      </rect>
     </property>
     <property name="text">
-     <string>mail Adresse des aktuellen benutzer</string>
+     <string>Email Adresse des aktuellen Benutzer</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_role">
@@ -254,7 +254,7 @@
      <rect>
       <x>40</x>
       <y>180</y>
-      <width>89</width>
+      <width>121</width>
       <height>51</height>
      </rect>
     </property>
@@ -306,18 +306,23 @@
      <string>Datum</string>
     </property>
    </widget>
-   <widget class="QScrollBar" name="scrollbar">
+   <widget class="QTableWidget" name="table_mitglieder">
     <property name="geometry">
      <rect>
-      <x>980</x>
-      <y>130</y>
-      <width>16</width>
-      <height>511</height>
+      <x>700</x>
+      <y>100</y>
+      <width>301</width>
+      <height>531</height>
      </rect>
     </property>
-    <property name="orientation">
-     <enum>Qt::Vertical</enum>
+    <property name="rowCount">
+     <number>0</number>
     </property>
+    <property name="columnCount">
+     <number>2</number>
+    </property>
+    <column/>
+    <column/>
    </widget>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
