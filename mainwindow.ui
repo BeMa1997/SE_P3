@@ -100,9 +100,6 @@
      </item>
      <item>
       <layout class="QGridLayout" name="gridLayout_2">
-       <item row="2" column="0">
-        <widget class="QDateEdit" name="dateEdit_geburtsdatum"/>
-       </item>
        <item row="1" column="0">
         <widget class="QLineEdit" name="lineEdit_nachname"/>
        </item>
