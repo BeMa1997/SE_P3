@@ -1,4 +1,4 @@
-#include "Person.h"
+#include "Klassenmitglied.h"
 
 Person::Person(QString fn, QString ln) : firstName(fn), lastName(ln){}
 
