@@ -26,10 +26,20 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
-        Klassenmitglied.cpp \
-        main.cpp
+        adresse.cpp \
+        aenderung.cpp \
+        datum.cpp \
+        hauptorganisator.cpp \
+        klassenmitglied.cpp \
+        main.cpp \
+        organisator.cpp
 
 HEADERS += \
-    Klassenmitglied.h
+    adresse.h \
+    aenderung.h \
+    datum.h \
+    hauptorganisator.h \
+    klassenmitglied.h \
+    organisator.h
 
 FORMS +=
