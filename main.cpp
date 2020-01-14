@@ -1,4 +1,4 @@
-#include "loginwindow.h"
+//#include "loginwindow.h"
 #include "iostream"
 
 using namespace std;;
@@ -24,9 +24,9 @@ int main(int argc, char *argv[])
 
     openDB();
 
-    loginwindow login;
+    //loginwindow login;
 
-    login.show();
+    //login.show();
     //w.show();
 
     return a.exec();
