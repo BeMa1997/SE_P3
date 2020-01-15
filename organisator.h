@@ -7,9 +7,15 @@ class Organisator : public Klassenmitglied
 {
 public:
     Organisator();
-    bool KlassenmitgliedAnlegen(Klassenmitglied* km);
+    ~Organisator();
+
     // bool KlassenmitgliedAnlegen(String[] args);ueüberladung
-    bool KlassenmitgliedBearbeiten(Klassenmitglied* km);
+    //bool KlassenmitgliedAnlegen(Klassenmitglied* km);
+    bool KlassenmitgliedAnlegen(string vorname, string nachname, string geburtsname, string eMail, string kennwort, string telNr);
+
+    //bool KlassenmitgliedBearbeiten(Klassenmitglied* km);
+    bool KlassenmitgliedBearbeiten(string vorname, string nachname, string geburtsname, string eMail, string kennwort, string telNr);
+
     bool Login(string eMail, string password);
     bool Logout();
     bool PasswortAendern(string alt, string neu);
