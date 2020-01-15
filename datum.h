@@ -5,7 +5,8 @@
 class Datum
 {
 public:
-    Datum();
+    Datum(int tag, int monat, int jahr);
+    ~Datum();
 
 private:
     int tag;
