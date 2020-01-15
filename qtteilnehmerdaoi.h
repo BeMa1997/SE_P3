@@ -18,6 +18,7 @@ public:
     virtual int InsertTeilnehmer() = 0;
     virtual int ModifyTeilnehmer() = 0;
     virtual Klassenmitglied GetTeilnehmer() = 0;
+    virtual bool ContainsTeilnehmer() = 0;
     virtual vector<Klassenmitglied> GetTeilnehmerListe() = 0;
     virtual bool Attach() = 0;
     virtual bool Detach() = 0;
