@@ -1,10 +1,26 @@
 #include "organisator.h"
+#include "qtteilnehmerdao.h"
 
 Organisator::Organisator()
 {
 
 }
 
+
+bool KlassenmitgliedAnlegen(string vorname, string nachname, string geburtsname, string eMail, string kennwort, string telNr)
+{
+    bool returnValue = false;
+
+    Klassenmitglied* km = new Klassenmitglied(vorname, nachname, geburtsname, eMail,  kennwort, telNr);
+    QtTeilnehmerDao::Instance()->InsertTeilnehmer(km);
+
+    if ( QtTeilnehmerDao::Instance()->ContainsTeilnehmer(km) )
+    {
+        returnValue = true;
+    }
+
+    return returnValue;
+}
 
 
 bool KlassenmitgliedBearbeiten(string vorname, string nachname, string geburtsname, string eMail, string kennwort, string telNr)
