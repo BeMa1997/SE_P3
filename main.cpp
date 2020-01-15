@@ -1,7 +1,7 @@
 //#include "loginwindow.h"
 #include "iostream"
 
-using namespace std;;
+using namespace std;
 
 #include <QtSql>
 #include <QApplication>
@@ -13,7 +13,7 @@ void openDB() {
     db.setDatabaseName("C:\\Users\\Andreas\\Documents\\soft_eng\\SE_P3\\Datenbank.db");
 
     if (!db.open()){
-        cout << "Datenbank Verbindung ist gescheitert" << endl;
+        cerr << "Datenbank Verbindung ist gescheitert" << endl;
         exit(1);
     }
 }
