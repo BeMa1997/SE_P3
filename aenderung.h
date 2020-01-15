@@ -9,12 +9,14 @@
 class Aenderung
 {
 public:
-    Aenderung();
+    Aenderung(int id, Organisator* orga, Klassenmitglied* mitglied, Datum datum);
+    ~Aenderung();
+
 private:
     int id;
     Organisator* orga;
-    Datum datum;
     Klassenmitglied* mitglied;
+    Datum datum;
 
 };
 
