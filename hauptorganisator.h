@@ -7,6 +7,8 @@ class Hauptorganisator : public Organisator
 {
 public:
     Hauptorganisator();
+    ~Hauptorganisator();
+
     bool KlassenmitgliedZuOrga(Klassenmitglied* km);
     bool OrgaZuKlassenmitglied(Organisator* orga);
     bool PasswortZuruecksetzen(Organisator* orga);
