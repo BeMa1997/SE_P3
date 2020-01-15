@@ -13,7 +13,10 @@ using namespace std;
 class Klassenmitglied
 {
 public:
-    Klassenmitglied();
+    Klassenmitglied(string vorname, string nachname, string geburtsname, string eMail, string kennwort, string telNr);
+    ~Klassenmitglied();
+
+    // fehlt da nicht ein Argument?
     bool aendern(Klassenmitglied*, Organisator*, Datum);
 
 private:
