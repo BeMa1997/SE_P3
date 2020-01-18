@@ -1,18 +1,81 @@
 #include "qtteilnehmerdao.h"
 
-QtTeilnehmerDao::QtTeilnehmerDao()
-{
+QtTeilnehmerDao::QtTeilnehmerDao() {
+    //Constructor
+
+}
+
+
+int InsertTeilnehmer() {
+
+    //
+
+    return 0;
+}
+
+
+int ModifyTeilnehmer() {
+
+    //
+
+    return 0;
+}
+
+
+Klassenmitglied GetTeilnehmer() {
+
     //
 }
 
 
-static QtTeilnehmerDao Instance()
-{
+bool ContainsTeilnehmer() {
+
+    bool returnValue = false;
+
+    //
+
+    return returnValue;
+}
+
+
+vector<Klassenmitglied> GetTeilnehmerListe() {
+
     //
 }
 
 
-bool ContainsTeilnehmer(Klassenmitglied* km)
-{
+bool Attach() {
+
+    bool returnValue = false;
+
     //
+
+    return returnValue;
+}
+
+
+bool Detach() {
+
+    bool returnValue = false;
+
+    //
+
+    return returnValue;
+}
+
+
+bool Notify() {
+
+    bool returnValue = false;
+
+    //
+
+    return returnValue;
+}
+
+
+int SetPath() {
+    //
+
+    return 0;
 }

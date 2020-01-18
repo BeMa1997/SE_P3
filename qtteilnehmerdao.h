@@ -1,18 +1,28 @@
 #ifndef QTTEILNEHMERDAO_H
 #define QTTEILNEHMERDAO_H
 
-#include "qtteilnehmerdaoi.h"
+#include <klassenmitglied.h>
+#include <vector>
+#include <QSqlDatabase>
 
-class QtTeilnehmerDao : public QtTeilnehmerDaoI
+class QtTeilnehmerDao
 {
 public:
     QtTeilnehmerDao();
 
-    static QtTeilnehmerDao* Instance();
+    int InsertTeilnehmer();
+    int ModifyTeilnehmer();
+    Klassenmitglied GetTeilnehmer();
+    bool ContainsTeilnehmer();
+    vector<Klassenmitglied> GetTeilnehmerListe();
+    bool Attach();
+    bool Detach();
+    bool Notify();
+    int SetPath();
 
 private:
-    QtTeilnehmerDao obj; //singleton object
-
+    vector<Klassenmitglied> teilnehmerListe;
+    QSqlDatabase database;
 };
 
 #endif // QTTEILNEHMERDAO_H
