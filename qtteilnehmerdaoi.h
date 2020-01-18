@@ -4,17 +4,18 @@
 #include <vector>
 #include <QSqlDatabase>
 #include "klassenmitglied.h"
-#include "qtteilnehmerdao.h"
+//#include "qtteilnehmerdao.h"
 
 using namespace std;
-
+//
+class QtTeilnehmerDao;
 class QtTeilnehmerDaoI
 {
 public:
     QtTeilnehmerDaoI(){}
     virtual ~QtTeilnehmerDaoI(){}
 
-    virtual QtTeilnehmerDao Instance() = 0;
+    virtual QtTeilnehmerDao* Instance() = 0;
     virtual int InsertTeilnehmer() = 0;
     virtual int ModifyTeilnehmer() = 0;
     virtual Klassenmitglied GetTeilnehmer() = 0;

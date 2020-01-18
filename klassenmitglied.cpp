@@ -1,6 +1,7 @@
 #include "klassenmitglied.h"
+#include "organisator.h"
 
-Klassenmitglied::Klassenmitglied(string vorname, string nachname, string geburtsname, string eMail, string kennwort, string telNr)
+Klassenmitglied::Klassenmitglied(string vorname, string nachname, string geburtsname, string eMail, string kennwort, string telNr): adresse()
 {
     this->vorname = vorname;
     this->nachname = nachname;

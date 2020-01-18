@@ -5,15 +5,17 @@
 #include <vector>
 #include <aenderung.h>
 #include <adresse.h>
-#include <organisator.h>
+//#include <organisator.h>
 #include <datum.h>
 
 using namespace std;
 
+class Organisator;
 class Klassenmitglied
 {
 public:
     Klassenmitglied(string vorname, string nachname, string geburtsname, string eMail, string kennwort, string telNr);
+    Klassenmitglied();
     ~Klassenmitglied();
 
     // fehlt da nicht ein Argument?

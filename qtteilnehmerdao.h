@@ -8,10 +8,10 @@ class QtTeilnehmerDao : public QtTeilnehmerDaoI
 public:
     QtTeilnehmerDao();
 
-    static QtTeilnehmerDao Instance();
+    static QtTeilnehmerDao* Instance();
 
 private:
-    static QtTeilnehmerDao obj; //singleton object
+    QtTeilnehmerDao obj; //singleton object
 
 };
 

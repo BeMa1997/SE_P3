@@ -1,8 +1,8 @@
 #include "adresse.h"
 
-Adresse::Adresse(string straße, string hausnummer, string ort, string plz, string land)
+Adresse::Adresse(string strasse, string hausnummer, string ort, string plz, string land)
 {
-    this->straße = straße;
+    this->strasse = strasse;
     this->hausnummer = hausnummer;
     this->ort = ort;
     this->plz = plz;

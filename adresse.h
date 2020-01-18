@@ -8,11 +8,12 @@ using namespace std;
 class Adresse
 {
 public:
-    Adresse(string straße, string hausnummer, string ort, string plz, string land);
+    Adresse(string strasse, string hausnummer, string ort, string plz, string land);
+    Adresse();
     ~Adresse();
 
 private:
-    string straße;
+    string strasse;
     string hausnummer;
     string ort;
     string plz;

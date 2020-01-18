@@ -1,7 +1,8 @@
 #include "organisator.h"
+#include "klassenmitglied.h"
 #include "qtteilnehmerdao.h"
 
-Organisator::Organisator()
+Organisator::Organisator(): Klassenmitglied()
 {
 
 }

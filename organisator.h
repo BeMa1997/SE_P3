@@ -2,6 +2,7 @@
 #define ORGANISATOR_H
 
 #include <klassenmitglied.h>
+#include <string>
 
 class Organisator : public Klassenmitglied
 {
