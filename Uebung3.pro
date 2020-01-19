@@ -34,7 +34,8 @@ SOURCES += \
         main.cpp \
         organisator.cpp \
         qtteilnehmerdao.cpp \
-        teilnehmerliste.cpp
+        teilnehmerliste.cpp \
+        mainwindow.cpp
 
 HEADERS += \
     adresse.h \
@@ -44,6 +45,8 @@ HEADERS += \
     klassenmitglied.h \
     organisator.h \
     qtteilnehmerdao.h \
-    teilnehmerliste.h
+    teilnehmerliste.h \
+    mainwindow.h
 
-FORMS +=
+FORMS += \
+    mainwindow.ui
