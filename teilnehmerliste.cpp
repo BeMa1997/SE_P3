@@ -1,6 +1,8 @@
 #include "teilnehmerliste.h"
 
 TeilnehmerListe* TeilnehmerListe::uniqueInstance = nullptr;
+list<Klassenmitglied> teilnehmerListe;
+QtTeilnehmerDao tDAO;
 
 TeilnehmerListe* TeilnehmerListe::Instance() {
     if(uniqueInstance == nullptr) {
@@ -13,8 +15,8 @@ TeilnehmerListe* TeilnehmerListe::Instance() {
 
 int InsertTeilnehmer(Klassenmitglied &km)
 {
-    //
-
+    teilnehmerListe.insert(teilnehmerListe.end(), km);
+    tDAO.Insert(km);
     return 0;
 }
 

@@ -26,6 +26,11 @@ class Klassenmitglied
         string getEmail(){return eMail;}
         string getKennwort(){return kennwort;}
         string getTelnr(){return telNr;}
+        string getStrasse(){return adresse.getStrasse();}
+        string getOrt(){return adresse.getOrt();}
+        string getPlz(){return adresse.getPlz();}
+        string getLand(){return adresse.getLand();}
+        string getHausnummer(){return adresse.getHausnummer();}
 
         //setter
         void setVorname(string vorname){this->vorname = vorname;}

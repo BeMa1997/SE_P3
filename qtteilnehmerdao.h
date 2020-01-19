@@ -2,24 +2,25 @@
 #define QTTEILNEHMERDAO_H
 
 #include <klassenmitglied.h>
+#include <organisator.h>
+#include <hauptorganisator.h>
 #include <vector>
 #include <QSqlDatabase>
-#include <map>
+#include <list>
 
 class QtTeilnehmerDao
 {
     public:
         QtTeilnehmerDao();
 
-        int Insert();
-        int Modify();
+        int Insert(Klassenmitglied &km);
+        int Modify(Klassenmitglied &km);
         Klassenmitglied Get();
-        bool Contains();
-        map<const int, Klassenmitglied> GetTeilnehmerListe();
+        bool Contains(Klassenmitglied &km);
+        bool GetTeilnehmerListe(list<Klassenmitglied>*);
         int SetPath();
 
     private:
-        map<const int, Klassenmitglied> teilnehmerListe;
         QSqlDatabase database;
 };
 

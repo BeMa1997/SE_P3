@@ -2,7 +2,8 @@
 #define TEILNEHMERLISTE_H
 
 #include <klassenmitglied.h>
-#include <map>
+#include <list>
+#include <qtteilnehmerdao.h>
 
 class TeilnehmerListe
 {
@@ -15,7 +16,7 @@ class TeilnehmerListe
         int ModifyTeilnehmer(Klassenmitglied &km);
         Klassenmitglied* GetTeilnehmer(int id);
         Klassenmitglied* GetTeilnehmer(string eMail);
-        map<int, Klassenmitglied> GetTeilnehmerListe();
+        // map<int, Klassenmitglied> GetTeilnehmerListe();
         bool ContainsTeilnehmer(Klassenmitglied &km);
         int SetPath(string path);
 
@@ -23,6 +24,8 @@ class TeilnehmerListe
     private:
         static TeilnehmerListe* uniqueInstance;
         TeilnehmerListe(){}
+        list<Klassenmitglied> teilnehmerListe;
+        QtTeilnehmerDao tDAO;
 };
 
 #endif // TEILNEHMERLISTE_H
