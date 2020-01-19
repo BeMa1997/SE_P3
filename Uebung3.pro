@@ -26,19 +26,24 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
-        Person.cpp \
-        changepasswordwindow.cpp \
-        loginwindow.cpp \
+        adresse.cpp \
+        aenderung.cpp \
+        datum.cpp \
+        hauptorganisator.cpp \
+        klassenmitglied.cpp \
         main.cpp \
-        mainwindow.cpp
+        organisator.cpp \
+        qtteilnehmerdao.cpp \
+        teilnehmerliste.cpp
 
 HEADERS += \
-        Person.h \
-        changepasswordwindow.h \
-        loginwindow.h \
-        mainwindow.h
+    adresse.h \
+    aenderung.h \
+    datum.h \
+    hauptorganisator.h \
+    klassenmitglied.h \
+    organisator.h \
+    qtteilnehmerdao.h \
+    teilnehmerliste.h
 
-FORMS += \
-        changepasswordwindow.ui \
-        loginwindow.ui \
-        mainwindow.ui
+FORMS +=
