@@ -1,20 +1,22 @@
 #ifndef ORGANISATOR_H
 #define ORGANISATOR_H
 
-#include <klassenmitglied.h>
-#include <teilnehmerliste.h>
+#include "klassenmitglied.h"
+#include <string>
+
+class TeilnehmerListe;
 
 class Organisator : public Klassenmitglied
 {
     public:
-        Organisator(string vorname, string nachname, string geburtsname, string eMail, string kennwort, string telNr, Adresse adresse);
+        Organisator(std::string vorname, std::string nachname, std::string geburtsname, std::string eMail, std::string kennwort, std::string telNr, Adresse adresse);
 
         bool KlassenmitgliedAnlegen(TeilnehmerListe &liste, Klassenmitglied &km);
         bool KlassenmitgliedBearbeiten(TeilnehmerListe &liste, Klassenmitglied &km);
 
-        bool Login(string eMail, string password);
+        bool Login(std::string eMail, std::string password);
         bool Logout();
-        bool PasswortAendern(string alt, string neu);
+        bool PasswortAendern(std::string alt, std::string neu);
 
     private:
         //nichts

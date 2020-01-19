@@ -10,7 +10,7 @@ using namespace std;
 void openDB() {
 
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    //db.setDatabaseName("C:\\Users\\Andreas\\Documents\\soft_eng\\SE_P3\\Datenbank.db");
+    db.setDatabaseName("C:\\Users\\Andreas\\Documents\\soft_eng\\SE_P3\\Datenbank.db");
     db.setDatabaseName("..\\data\\Datenbank.db");
 
     if (!db.open()){
@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    openDB();
+    //openDB();
 
     //loginwindow login;
 

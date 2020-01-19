@@ -1,13 +1,11 @@
 #ifndef QTTEILNEHMERDAO_H
 #define QTTEILNEHMERDAO_H
 
-#include <klassenmitglied.h>
-#include <organisator.h>
-#include <hauptorganisator.h>
-#include <vector>
 #include <QSqlDatabase>
-#include <list>
 #include <QtSql>
+#include <list>
+
+class Klassenmitglied;
 
 class QtTeilnehmerDao
 {
@@ -18,8 +16,9 @@ class QtTeilnehmerDao
         int Modify(Klassenmitglied &km);
         bool Get(int id, Klassenmitglied &km);
         bool Contains(Klassenmitglied &km);
-        bool GetTeilnehmerListe(list<Klassenmitglied>*);
+        bool GetTeilnehmerListe(std::list<Klassenmitglied> &liste);
         int SetPath();
+
 
     private:
         QSqlDatabase database;

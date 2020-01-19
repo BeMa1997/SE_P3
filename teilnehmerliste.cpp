@@ -1,5 +1,7 @@
 #include "teilnehmerliste.h"
 
+using namespace std;
+
 TeilnehmerListe* TeilnehmerListe::uniqueInstance = nullptr;
 list<Klassenmitglied> teilnehmerListe;
 QtTeilnehmerDao tDAO;

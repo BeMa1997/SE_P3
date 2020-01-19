@@ -3,26 +3,24 @@
 
 #include <string>
 
-using namespace std;
-
 class Adresse
 {
     public:
         Adresse();
-        Adresse(string strasse, string hausnummer, string ort, string plz, string land);
+        Adresse(std::string strasse, std::string hausnummer, std::string ort, std::string plz, std::string land);
 
-        string getStrasse(){return strasse;}
-        string getHausnummer(){return hausnummer;}
-        string getOrt(){return ort;}
-        string getPlz(){return plz;}
-        string getLand(){return land;}
+        std::string getStrasse(){return strasse;}
+        std::string getHausnummer(){return hausnummer;}
+        std::string getOrt(){return ort;}
+        std::string getPlz(){return plz;}
+        std::string getLand(){return land;}
 
     private:
-        string strasse;
-        string hausnummer;
-        string ort;
-        string plz;
-        string land;
+        std::string strasse;
+        std::string hausnummer;
+        std::string ort;
+        std::string plz;
+        std::string land;
 
 };
 

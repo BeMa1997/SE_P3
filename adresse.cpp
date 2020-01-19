@@ -1,5 +1,6 @@
 #include "adresse.h"
 
+using namespace std;
 
 Adresse::Adresse(string strasse, string hausnummer, string ort, string plz, string land)
 {

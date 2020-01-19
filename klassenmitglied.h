@@ -1,12 +1,10 @@
 #ifndef KLASSENMITGLIED_H
 #define KLASSENMITGLIED_H
 
-#include <string>
 #include <list>
-#include <aenderung.h>
-#include <adresse.h>
-//#include <organisator.h>
-#include <datum.h>
+#include "datum.h"
+#include "adresse.h"
+#include "aenderung.h"
 
 using namespace std;
 

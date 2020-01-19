@@ -1,7 +1,6 @@
 #include "organisator.h"
-#include "klassenmitglied.h"
-#include "qtteilnehmerdao.h"
-#include "teilnehmerliste.h"
+
+using namespace std;
 
 Organisator::Organisator(string vorname, string nachname, string geburtsname, string eMail, string kennwort, string telNr, Adresse adresse) : Klassenmitglied(vorname, nachname, geburtsname, eMail, kennwort, telNr, adresse)
 {
@@ -12,17 +11,17 @@ bool Organisator::KlassenmitgliedAnlegen(TeilnehmerListe &liste, Klassenmitglied
 {
     bool returnValue = false;
 
-    // check pre-condition
-    if ( !liste.ContainsTeilnehmer(km) )
-    {
-        liste.InsertTeilnehmer(km);
-    }
+//    // check pre-condition
+//    if ( !liste.ContainsTeilnehmer(km) )
+//    {
+//        liste.InsertTeilnehmer(km);
+//    }
 
-    // check post-condition
-    if ( liste.ContainsTeilnehmer(km) )
-    {
-        returnValue = true;
-    }
+//    // check post-condition
+//    if ( liste.ContainsTeilnehmer(km) )
+//    {
+//        returnValue = true;
+//    }
 
     return returnValue;
 }
@@ -32,12 +31,12 @@ bool Organisator::KlassenmitgliedBearbeiten(TeilnehmerListe &liste, Klassenmitgl
 {
     bool returnValue = false;
 
-    // check pre-condition
-    if ( TeilnehmerListe::Instance()->ContainsTeilnehmer(km) )
-    {
-        // overwrite all attributes but the id
-        liste.ModifyTeilnehmer(km);
-    }
+//    // check pre-condition
+//    if ( TeilnehmerListe::Instance()->ContainsTeilnehmer(km) )
+//    {
+//        // overwrite all attributes but the id
+//        liste.ModifyTeilnehmer(km);
+//    }
 
 //    // check post-condition
 //    if ( liste.GetTeilnehmer() ==  &km)

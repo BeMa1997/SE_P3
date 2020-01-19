@@ -1,12 +1,11 @@
 #ifndef AENDERUNG_H
 #define AENDERUNG_H
 
-//#include <organisator.h>
-#include <datum.h>
-//#include <klassenmitglied.h>
+#include "datum.h"
 
-class Organisator;
 class Klassenmitglied;
+class Organisator;
+
 class Aenderung
 {
     public:

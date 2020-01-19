@@ -1,9 +1,13 @@
 #ifndef TEILNEHMERLISTE_H
 #define TEILNEHMERLISTE_H
 
-#include <klassenmitglied.h>
+#include "klassenmitglied.h"
+#include "qtteilnehmerdao.h"
+#include <string>
 #include <list>
-#include <qtteilnehmerdao.h>
+
+
+class Organisator;
 
 class TeilnehmerListe
 {
@@ -15,16 +19,15 @@ class TeilnehmerListe
 
         int ModifyTeilnehmer(Klassenmitglied &km);
         Klassenmitglied* GetTeilnehmer(int id);
-        Klassenmitglied* GetTeilnehmer(string eMail);
-        // map<int, Klassenmitglied> GetTeilnehmerListe();
+        Klassenmitglied* GetTeilnehmer(std::string eMail);
         bool ContainsTeilnehmer(Klassenmitglied &km);
-        int SetPath(string path);
+        int SetPath(std::string path);
 
 
     private:
         static TeilnehmerListe* uniqueInstance;
         TeilnehmerListe(){}
-        list<Klassenmitglied> teilnehmerListe;
+        std::list<Klassenmitglied> teilnehmerListe;
         QtTeilnehmerDao tDAO;
 };
 
