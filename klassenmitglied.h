@@ -19,6 +19,22 @@ class Klassenmitglied
         // das objekt in teilnehmerliste erhält diese erhalten sie erst später nach dem eintragen in die Datenbank
         Klassenmitglied(string vorname, string nachname, string geburtsname, string eMail, string kennwort, string telNr, Adresse adresse);
 
+        //getter
+        string getVorname(){return vorname;}
+        string getNachname(){return nachname;}
+        string getGeburtsname(){return geburtsname;}
+        string getEmail(){return eMail;}
+        string getKennwort(){return kennwort;}
+        string getTelnr(){return telNr;}
+
+        //setter
+        void setVorname(string vorname){this->vorname = vorname;}
+        void setNachname(string nachname){this->nachname = nachname;}
+        void setGeburtsname(string geburtsname){this->geburtsname = geburtsname;}
+        void setEmail(string eMail){this->eMail = eMail;}
+        void setKennwort(string kennwort){this->kennwort = kennwort;}
+        void setTelnr(string telNr){this->telNr = telNr;}
+
         // fehlt da nicht ein Argument?
         bool aendern(Klassenmitglied*, Organisator*, Datum);
 
