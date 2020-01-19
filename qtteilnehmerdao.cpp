@@ -1,4 +1,5 @@
 #include "qtteilnehmerdao.h"
+#include <map>
 
 QtTeilnehmerDao::QtTeilnehmerDao() {
     //Constructor
@@ -6,7 +7,7 @@ QtTeilnehmerDao::QtTeilnehmerDao() {
 }
 
 
-int InsertTeilnehmer() {
+int Insert() {
 
     //
 
@@ -14,7 +15,7 @@ int InsertTeilnehmer() {
 }
 
 
-int ModifyTeilnehmer() {
+int Modify() {
 
     //
 
@@ -22,13 +23,13 @@ int ModifyTeilnehmer() {
 }
 
 
-Klassenmitglied GetTeilnehmer() {
+Klassenmitglied Get() {
 
     //
 }
 
 
-bool ContainsTeilnehmer() {
+bool Contains() {
 
     bool returnValue = false;
 
@@ -38,39 +39,9 @@ bool ContainsTeilnehmer() {
 }
 
 
-vector<Klassenmitglied> GetTeilnehmerListe() {
+map<const int, Klassenmitglied> GetTeilnehmerListe() {
 
     //
-}
-
-
-bool Attach() {
-
-    bool returnValue = false;
-
-    //
-
-    return returnValue;
-}
-
-
-bool Detach() {
-
-    bool returnValue = false;
-
-    //
-
-    return returnValue;
-}
-
-
-bool Notify() {
-
-    bool returnValue = false;
-
-    //
-
-    return returnValue;
 }
 
 

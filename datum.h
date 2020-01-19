@@ -4,14 +4,13 @@
 
 class Datum
 {
-public:
-    Datum(int tag, int monat, int jahr);
-    ~Datum();
+    public:
+        Datum(int tag, int monat, int jahr);
 
-private:
-    int tag;
-    int monat;
-    int jahr;
+    private:
+        int tag;
+        int monat;
+        int jahr;
 };
 
 #endif // DATUM_H

@@ -7,17 +7,16 @@ using namespace std;
 
 class Adresse
 {
-public:
-    Adresse(string strasse, string hausnummer, string ort, string plz, string land);
-    Adresse();
-    ~Adresse();
+    public:
+        Adresse();
+        Adresse(string strasse, string hausnummer, string ort, string plz, string land);
 
-private:
-    string strasse;
-    string hausnummer;
-    string ort;
-    string plz;
-    string land;
+    private:
+        string strasse;
+        string hausnummer;
+        string ort;
+        string plz;
+        string land;
 
 };
 

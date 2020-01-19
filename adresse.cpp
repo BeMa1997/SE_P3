@@ -1,5 +1,6 @@
 #include "adresse.h"
 
+
 Adresse::Adresse(string strasse, string hausnummer, string ort, string plz, string land)
 {
     this->strasse = strasse;

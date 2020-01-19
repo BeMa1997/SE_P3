@@ -4,25 +4,23 @@
 #include <klassenmitglied.h>
 #include <vector>
 #include <QSqlDatabase>
+#include <map>
 
 class QtTeilnehmerDao
 {
-public:
-    QtTeilnehmerDao();
+    public:
+        QtTeilnehmerDao();
 
-    int InsertTeilnehmer();
-    int ModifyTeilnehmer();
-    Klassenmitglied GetTeilnehmer();
-    bool ContainsTeilnehmer();
-    vector<Klassenmitglied> GetTeilnehmerListe();
-    bool Attach();
-    bool Detach();
-    bool Notify();
-    int SetPath();
+        int Insert();
+        int Modify();
+        Klassenmitglied Get();
+        bool Contains();
+        map<const int, Klassenmitglied> GetTeilnehmerListe();
+        int SetPath();
 
-private:
-    vector<Klassenmitglied> teilnehmerListe;
-    QSqlDatabase database;
+    private:
+        map<const int, Klassenmitglied> teilnehmerListe;
+        QSqlDatabase database;
 };
 
 #endif // QTTEILNEHMERDAO_H

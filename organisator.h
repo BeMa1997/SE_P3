@@ -2,27 +2,22 @@
 #define ORGANISATOR_H
 
 #include <klassenmitglied.h>
-#include <string>
+#include <teilnehmerliste.h>
 
 class Organisator : public Klassenmitglied
 {
-public:
-    Organisator();
-    ~Organisator();
+    public:
+        Organisator(string vorname, string nachname, string geburtsname, string eMail, string kennwort, string telNr, Adresse adresse);
 
-    // bool KlassenmitgliedAnlegen(String[] args);ueüberladung
-    //bool KlassenmitgliedAnlegen(Klassenmitglied* km);
-    bool KlassenmitgliedAnlegen(string vorname, string nachname, string geburtsname, string eMail, string kennwort, string telNr);
+        bool KlassenmitgliedAnlegen(TeilnehmerListe &liste, Klassenmitglied &km);
+        bool KlassenmitgliedBearbeiten(TeilnehmerListe &liste, Klassenmitglied &km);
 
-    //bool KlassenmitgliedBearbeiten(Klassenmitglied* km);
-    bool KlassenmitgliedBearbeiten(string vorname, string nachname, string geburtsname, string eMail, string kennwort, string telNr);
+        bool Login(string eMail, string password);
+        bool Logout();
+        bool PasswortAendern(string alt, string neu);
 
-    bool Login(string eMail, string password);
-    bool Logout();
-    bool PasswortAendern(string alt, string neu);
-
-private:
-    //nichts
+    private:
+        //nichts
 
 };
 
