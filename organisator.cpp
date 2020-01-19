@@ -8,7 +8,7 @@ Organisator::Organisator(string vorname, string nachname, string geburtsname, st
     // constructor
 }
 
-bool KlassenmitgliedAnlegen(TeilnehmerListe &liste, Klassenmitglied &km)
+bool Organisator::KlassenmitgliedAnlegen(TeilnehmerListe &liste, Klassenmitglied &km)
 {
     bool returnValue = false;
 
@@ -28,7 +28,7 @@ bool KlassenmitgliedAnlegen(TeilnehmerListe &liste, Klassenmitglied &km)
 }
 
 
-bool KlassenmitgliedBearbeiten(TeilnehmerListe &liste, Klassenmitglied &km)
+bool Organisator::KlassenmitgliedBearbeiten(TeilnehmerListe &liste, Klassenmitglied &km)
 {
     bool returnValue = false;
 
@@ -49,7 +49,7 @@ bool KlassenmitgliedBearbeiten(TeilnehmerListe &liste, Klassenmitglied &km)
 }
 
 
-bool Login(string eMail, string password)
+bool Organisator::Login(string eMail, string password)
 {
     bool returnValue = false;
 
@@ -59,7 +59,7 @@ bool Login(string eMail, string password)
 }
 
 
-bool Logout()
+bool Organisator::Logout()
 {
     bool returnValue = false;
 
@@ -69,7 +69,7 @@ bool Logout()
 }
 
 
-bool PasswortAendern(string alt, string neu)
+bool Organisator::PasswortAendern(string alt, string neu)
 {
     bool returnValue = false;
 
