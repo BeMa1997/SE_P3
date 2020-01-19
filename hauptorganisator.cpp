@@ -1,6 +1,6 @@
 #include "hauptorganisator.h"
 
-Hauptorganisator::Hauptorganisator(string vorname, string nachname, string geburtsname, string eMail, string kennwort, string telNr, Adresse adresse)
+Hauptorganisator::Hauptorganisator(string vorname, string nachname, string geburtsname, string eMail, string kennwort, string telNr, Adresse adresse):Organisator(vorname, nachname, geburtsname, eMail, kennwort, telNr, adresse)
 {
     //const
 }
