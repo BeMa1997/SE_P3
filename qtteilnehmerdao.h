@@ -7,6 +7,7 @@
 #include <vector>
 #include <QSqlDatabase>
 #include <list>
+#include <QtSql>
 
 class QtTeilnehmerDao
 {
@@ -15,7 +16,7 @@ class QtTeilnehmerDao
 
         int Insert(Klassenmitglied &km);
         int Modify(Klassenmitglied &km);
-        Klassenmitglied Get();
+        bool Get(int id, Klassenmitglied &km);
         bool Contains(Klassenmitglied &km);
         bool GetTeilnehmerListe(list<Klassenmitglied>*);
         int SetPath();

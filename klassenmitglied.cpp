@@ -13,6 +13,18 @@ Klassenmitglied::Klassenmitglied(string vorname, string nachname, string geburts
     this->adresse = adresse;
 }
 
+Klassenmitglied::Klassenmitglied(int id, string vorname, string nachname, string geburtsname, string eMail, string kennwort, string telNr, Adresse adresse):adresse(adresse)
+{
+    this->id = id;
+    this->vorname = vorname;
+    this->nachname = nachname;
+    this->geburtsname = geburtsname;
+    this->eMail = eMail;
+    this->kennwort = kennwort;
+    this->telNr = telNr;
+    this->adresse = adresse;
+}
+
 
 bool Klassenmitglied::aendern(Klassenmitglied*, Organisator*, Datum)
 {
