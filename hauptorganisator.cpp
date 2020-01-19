@@ -6,7 +6,7 @@ Hauptorganisator::Hauptorganisator(string vorname, string nachname, string gebur
 }
 
 
-bool KlassenmitgliedZuOrga(Klassenmitglied* km)
+bool Hauptorganisator::KlassenmitgliedZuOrga(Klassenmitglied* km)
 {
     bool returnValue = false;
 
@@ -16,7 +16,7 @@ bool KlassenmitgliedZuOrga(Klassenmitglied* km)
 }
 
 
-bool OrgaZuKlassenmitglied(Organisator* orga)
+bool Hauptorganisator::OrgaZuKlassenmitglied(Organisator* orga)
 {
     bool returnValue = false;
 
@@ -26,7 +26,7 @@ bool OrgaZuKlassenmitglied(Organisator* orga)
 }
 
 
-bool PasswortZuruecksetzen(Organisator* orga)
+bool Hauptorganisator::PasswortZuruecksetzen(Organisator* orga)
 {
     bool returnValue = false;
 

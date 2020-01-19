@@ -14,7 +14,7 @@ Klassenmitglied::Klassenmitglied(string vorname, string nachname, string geburts
 }
 
 
-bool aendern(Klassenmitglied*, Organisator*, Datum)
+bool Klassenmitglied::aendern(Klassenmitglied*, Organisator*, Datum)
 {
     bool returnValue = false;
 
