@@ -20,6 +20,8 @@ class TeilnehmerListe
         int ModifyTeilnehmer(Klassenmitglied km, int id);
         Klassenmitglied* GetTeilnehmer(int id);
 
+        bool ContainsTeilnehmer(Klassenmitglied* km);
+
         Klassenmitglied* GetTeilnehmer(int teilnehmerId);
         Klassenmitglied* GetTeilnehmer(std::string eMail);
 

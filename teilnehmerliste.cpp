@@ -70,11 +70,20 @@ Klassenmitglied* TeilnehmerListe::GetTeilnehmer(string eMail)
     return kmOut;
 }
 
-bool TeilnehmerListe::ContainsTeilnehmer(Klassenmitglied km)
+
+// überprüft ob Klassenmitglied km in der TeilnehmerListe enthalten ist (anhand des gesamten Objekts)
+bool TeilnehmerListe::ContainsTeilnehmer(Klassenmitglied* km)
 {
     bool returnValue = false;
 
-    //
+    for(auto x : teilnehmerListe)
+    {
+        if ( &x == km )
+        {
+            returnValue = true;
+            break;
+        }
+    }
 
     return returnValue;
 }
