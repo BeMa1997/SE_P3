@@ -27,7 +27,11 @@ bool Hauptorganisator::OrgaZuKlassenmitglied(Organisator* orga)
 {
     bool returnValue = false;
 
-    //
+    // orga zu km, rückgabe prüfen
+    if( TeilnehmerListe::Instance()->ToKlassenmitglied(orga, this->getId()) == 0 )
+    {
+        returnValue = true;
+    }
 
     return returnValue;
 }
