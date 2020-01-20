@@ -12,7 +12,7 @@ class Organisator : public Klassenmitglied
         Organisator(std::string vorname, std::string nachname, std::string geburtsname, std::string eMail, std::string kennwort, std::string telNr, Adresse adresse);
 
         bool KlassenmitgliedAnlegen(Klassenmitglied* km);
-        bool KlassenmitgliedBearbeiten(TeilnehmerListe &liste, Klassenmitglied &km);
+        bool KlassenmitgliedBearbeiten(Klassenmitglied* km);
 
         bool Login(std::string eMail, std::string password);
         bool Logout();

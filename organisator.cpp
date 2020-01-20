@@ -1,4 +1,5 @@
 #include "organisator.h"
+#include "teilnehmerliste.h"
 
 using namespace std;
 
@@ -27,22 +28,23 @@ bool Organisator::KlassenmitgliedAnlegen(Klassenmitglied* km)
 }
 
 
-bool Organisator::KlassenmitgliedBearbeiten(TeilnehmerListe &liste, Klassenmitglied &km)
+bool Organisator::KlassenmitgliedBearbeiten(Klassenmitglied* km)
 {
     bool returnValue = false;
 
-//    // check pre-condition
-//    if ( TeilnehmerListe::Instance()->ContainsTeilnehmer(km) )
-//    {
-//        // overwrite all attributes but the id
-//        liste.ModifyTeilnehmer(km);
-//    }
+    // check pre-condition
+    if ( TeilnehmerListe::Instance()->ContainsTeilnehmer(*km) )
+    {
+        // overwrite all attributes but the id
+        TeilnehmerListe::Instance()->ModifyTeilnehmer(*km);
+    }
 
-//    // check post-condition
-//    if ( liste.GetTeilnehmer() ==  &km)
-//    {
-//        returnValue = true;
-//    }
+    // check post-condition
+    Klassenmitglied* databaseObj = TeilnehmerListe::Instance()->GetTeilnehmer(km->getId());
+    if ( databaseObj ==  km)
+    {
+        returnValue = true;
+    }
 
     return returnValue;
 }
