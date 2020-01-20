@@ -1,4 +1,5 @@
 #include "teilnehmerliste.h"
+#include "organisator.h"
 
 using namespace std;
 
@@ -224,6 +225,41 @@ int TeilnehmerListe::ToOrganisator(Klassenmitglied* km, int orgaId)
 
         // organisator zu Datenbank synchronisieren
         Aenderung change = Aenderung(orgaId, &orga, Datum());
+
+        int index = tDAO.Modify(change);
+        change.setId(index);
+
+    }
+
+    return retVal;
+}
+
+
+int TeilnehmerListe::ToKlassenmitglied(Organisator *orga, int orgaId)
+{
+    int retVal = 0;
+
+    // orga in TeilnehmerListe?
+    if( TeilnehmerListe::Instance()->ContainsTeilnehmer(orga) )
+    {
+        // orga zu km kopieren
+        Klassenmitglied km = Klassenmitglied(orga);
+
+        // orga aus TeilnehmerListe löschen
+        for(auto it = teilnehmerListe.begin(); it != teilnehmerListe.end(); it++)
+        {
+            if ( it->getId() == orga->getId() )
+            {
+                teilnehmerListe.erase(it);
+                break;
+            }
+        }
+
+        // km in TeilnehmerListe einfügen
+        teilnehmerListe.push_back(km);
+
+        // km zu Datenbank synchronisieren
+        Aenderung change = Aenderung(orgaId, &km, Datum());
 
         int index = tDAO.Modify(change);
         change.setId(index);

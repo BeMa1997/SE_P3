@@ -18,7 +18,7 @@ class TeilnehmerListe
         int InsertTeilnehmer(Organisator* orga, int orgaId);
 
         int ModifyTeilnehmer(Klassenmitglied* km, int orgaId);
-        Klassenmitglied* GetTeilnehmer(int id);
+        int ToKlassenmitglied(Organisator* orga, int orgaId);
         int ToOrganisator(Klassenmitglied* km, int orgaId);
 
         bool ContainsTeilnehmer(Klassenmitglied* km);
