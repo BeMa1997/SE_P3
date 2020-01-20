@@ -55,7 +55,7 @@ QtTeilnehmerDao::QtTeilnehmerDao() {
 }
 
 
-int Insert(Klassenmitglied &km) {
+int QtTeilnehmerDao::Insert(Klassenmitglied &km) {
     QSqlQuery query(database);
     query.prepare("INSERT INTO Klassenmitglied ("
                   "vorname, "
@@ -129,7 +129,7 @@ int Insert(Klassenmitglied &km) {
 }
 
 
-int Modify(Klassenmitglied &km) {
+int QtTeilnehmerDao::Modify(Klassenmitglied &km) {
     QSqlQuery query(database);
 
     int id = km.getId();
@@ -222,7 +222,7 @@ int Modify(Klassenmitglied &km) {
 }
 
 
-bool Get(int id, Klassenmitglied& km) {
+bool QtTeilnehmerDao::Get(int id, Klassenmitglied& km) {
     QSqlQuery query(database);
 
     query.prepare("SELECT * FROM Klassenmitglied WHERE id==\":id\";");
@@ -272,7 +272,7 @@ bool Get(int id, Klassenmitglied& km) {
 }
 
 
-bool Contains(Klassenmitglied &km) {
+bool QtTeilnehmerDao::Contains(Klassenmitglied &km) {
 
     bool returnValue = false;
 
@@ -296,7 +296,7 @@ bool Contains(Klassenmitglied &km) {
 }
 
 
-bool GetTeilnehmerListe(list<Klassenmitglied> &lkm) {
+bool QtTeilnehmerDao::GetTeilnehmerListe(list<Klassenmitglied> &lkm) {
     QSqlQuery query(database);
 
     query.prepare("SELECT * FROM Klassenmitglied;");
@@ -343,7 +343,7 @@ bool GetTeilnehmerListe(list<Klassenmitglied> &lkm) {
 }
 
 
-int SetPath() {
+int QtTeilnehmerDao::SetPath() {
     //
 
     return 0;
