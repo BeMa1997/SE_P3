@@ -12,8 +12,8 @@ class QtTeilnehmerDao
     public:
         QtTeilnehmerDao();
 
-        int Insert(Klassenmitglied &km);
-        int Modify(Klassenmitglied &km);
+        int Insert(Klassenmitglied &km, int id);
+        int Modify(Klassenmitglied &km, int id);
         bool Get(int id, Klassenmitglied &km);
         bool Contains(Klassenmitglied &km);
         bool GetTeilnehmerListe(std::list<Klassenmitglied> &liste);

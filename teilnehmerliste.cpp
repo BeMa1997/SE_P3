@@ -15,10 +15,10 @@ TeilnehmerListe* TeilnehmerListe::Instance() {
 }
 
 
-int TeilnehmerListe::InsertTeilnehmer(Klassenmitglied &km)
+int TeilnehmerListe::InsertTeilnehmer(Klassenmitglied &km, int id)
 {
     teilnehmerListe.insert(teilnehmerListe.end(), km);
-    tDAO.Insert(km);
+    tDAO.Insert(km, id);
     return 0;
 }
 
@@ -31,7 +31,7 @@ int TeilnehmerListe::InsertTeilnehmer(Organisator &orga)
 }
 
 
-int TeilnehmerListe::ModifyTeilnehmer(Klassenmitglied &km)
+int TeilnehmerListe::ModifyTeilnehmer(Klassenmitglied &km, int id)
 {
     //
 }
