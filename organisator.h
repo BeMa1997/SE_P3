@@ -19,6 +19,8 @@ class Organisator : public Klassenmitglied
         bool PasswortAendern(std::string alt, std::string neu);
 
         bool operator ==(const Organisator& d);
+        bool operator !=(const Organisator& d);
+
     private:
         //nichts
 

@@ -115,3 +115,21 @@ bool Organisator::operator ==(const Organisator& d)
     return returnValue;
 }
 
+
+bool Organisator::operator !=(const Organisator& d)
+{
+    bool returnValue = false;
+
+    if(vorname != d.vorname ||
+        nachname != d.nachname ||
+        geburtsname != d.geburtsname ||
+        eMail != d.eMail ||
+        kennwort != d.kennwort ||
+        telNr != d.telNr ||
+        adresse != d.adresse)
+    {
+        returnValue = true;
+    }
+
+    return returnValue;
+}
