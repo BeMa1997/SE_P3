@@ -23,13 +23,19 @@ class TeilnehmerListe
         bool ContainsTeilnehmer(Klassenmitglied km);
         int SetPath(std::string path);
 
+        // Session-Management
         bool Login(std::string eMail, std::string kennwort);
+        Klassenmitglied* getCurrentUser(){return currentUser;}
+        void setCurrentUser(Klassenmitglied* currentUser){this->currentUser = currentUser;}
+
 
     private:
         static TeilnehmerListe* uniqueInstance;
+        static Klassenmitglied* currentUser;
         TeilnehmerListe(){}
         std::list<Klassenmitglied> teilnehmerListe;
         QtTeilnehmerDao tDAO;
+
 };
 
 #endif // TEILNEHMERLISTE_H

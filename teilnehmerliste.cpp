@@ -3,6 +3,7 @@
 using namespace std;
 
 TeilnehmerListe* TeilnehmerListe::uniqueInstance = nullptr;
+Klassenmitglied* TeilnehmerListe::currentUser = nullptr;
 list<Klassenmitglied> teilnehmerListe;
 
 TeilnehmerListe* TeilnehmerListe::Instance() {
@@ -71,11 +72,19 @@ int TeilnehmerListe::SetPath(string path)
 bool TeilnehmerListe::Login(string eMail, string kennwort)
 {
     bool returnValue = false;
+    Klassenmitglied* userToLogin;
 
+    // Teilnehmer mit eMail in TeilnehmerListe enthalten
     if ( ContainsTeilnehmer(eMail) )
     {
-        currentUser = GetTeilnehmer(eMail);
-        returnValue = true;
+        userToLogin = GetTeilnehmer(eMail);
+
+        // Validierung der user credentials erfolgreich
+        if(userToLogin->getKennwort() == kennwort)
+        {
+            currentUser = userToLogin;
+            returnValue = true;
+        }
     }
 
     return returnValue;
