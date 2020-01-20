@@ -60,12 +60,20 @@ bool Klassenmitglied::operator ==(const Klassenmitglied& d)
 }
 
 
-//      km1.kennwort == km2.kennwort &&
-//      km1.nachname == km2.nachname &&
-//      km1.geburtsname == km2.geburtsname )
-//    {
-//     returnValue = true;
-//    }
+bool Klassenmitglied::operator !=(const Klassenmitglied& d)
+{
+    bool returnValue = false;
 
-//    return returnValue;
-//}
+    if(vorname != d.vorname ||
+        nachname != d.nachname ||
+        geburtsname != d.geburtsname ||
+        eMail != d.eMail ||
+        kennwort != d.kennwort ||
+        telNr != d.telNr ||
+        adresse != d.adresse)
+    {
+        returnValue = true;
+    }
+
+    return returnValue;
+}

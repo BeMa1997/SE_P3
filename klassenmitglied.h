@@ -50,6 +50,8 @@ class Klassenmitglied
 
         // Operatoren
         bool operator ==(const Klassenmitglied& d);
+        bool operator !=(const Klassenmitglied& d);
+
     protected:
         int id;
         string vorname;
