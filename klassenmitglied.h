@@ -34,6 +34,7 @@ class Klassenmitglied
         string getHausnummer(){return adresse.getHausnummer();}
 
         //setter
+        void setId(int id){this->id = id;}
         void setVorname(string vorname){this->vorname = vorname;}
         void setNachname(string nachname){this->nachname = nachname;}
         void setGeburtsname(string geburtsname){this->geburtsname = geburtsname;}
