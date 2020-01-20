@@ -55,7 +55,7 @@ QtTeilnehmerDao::QtTeilnehmerDao() {
 }
 
 
-int QtTeilnehmerDao::Insert(Klassenmitglied &km, int id) {
+int QtTeilnehmerDao::Insert(Klassenmitglied &km, int orga_id) {
     QSqlQuery query(database);
     query.prepare("INSERT INTO Klassenmitglied ("
                   "vorname, "
@@ -133,10 +133,8 @@ int QtTeilnehmerDao::Insert(Klassenmitglied &km, int id) {
 }
 
 
-int QtTeilnehmerDao::Modify(Klassenmitglied &km, int orga_id) {
+int QtTeilnehmerDao::Modify(Aenderung &aenderung) {
     QSqlQuery query(database);
-
-    int id = km.getId();
 
     query.prepare("INSERT INTO Aenderung ("
     "id, "
@@ -173,7 +171,9 @@ int QtTeilnehmerDao::Modify(Klassenmitglied &km, int orga_id) {
     ":hausnr, "
     ":ort, "
     ":plz, "
-    ":land)");
+    ":land, "
+    ":erfasst, "
+    ":taetigt)");
     query.bindValue(":id", QString::fromStdString(to_string(id)));
     query.bindValue(":vorname", QString::fromStdString(km.getVorname()));
     query.bindValue(":nachname", QString::fromStdString(km.getNachname()));
@@ -217,95 +217,6 @@ int QtTeilnehmerDao::Modify(Klassenmitglied &km, int orga_id) {
     {
         return 1;
     }
-
-
-
-//    query.prepare("DELETE FROM Klassenmitglied WHERE id==\":id\";");
-//    query.bindValue(":id", QString::fromStdString(to_string(km.getId())));
-
-//    if(query.exec())
-//    {
-//        qDebug() << "Ok";
-//    }
-//    else
-//    {
-//        qDebug() << "Fehler: DELETE-Query geht nicht!";
-//    }
-
-//    query.clear();
-
-//    query.prepare("INSERT INTO Klassenmitglied ("
-//                  "id, "
-//                  "vorname, "
-//                  "nachname, "
-//                  "geburtsname, "
-//                  "email, "
-//                  "telnr, "
-//                  "typ, "
-//                  "kennwort, "
-//                  "strasse, "
-//                  "hausnr, "
-//                  "ort, "
-//                  "plz, "
-//                  "land) "
-//                  "VALUES ("
-//                  ":id, "
-//                  ":vorname, "
-//                  ":nachname, "
-//                  ":geburtsname,"
-//                  ":email, "
-//                  ":telnr, "
-//                  ":typ, "
-//                  ":kennwort, "
-//                  ":strasse, "
-//                  ":hausnr, "
-//                  ":ort, "
-//                  ":plz, "
-//                  ")");
-//    query.bindValue(":id", QString::fromStdString(to_string(id)));
-//    query.bindValue(":vorname", QString::fromStdString(km.getVorname()));
-//    query.bindValue(":nachname", QString::fromStdString(km.getNachname()));
-//    query.bindValue(":geburtsname", QString::fromStdString(km.getGeburtsname()));
-//    query.bindValue(":email", QString::fromStdString(km.getEmail()));
-//    query.bindValue(":telnr", QString::fromStdString(km.getTelnr()));
-//    if(typeid(km).name() == typeid(Klassenmitglied).name())
-//    {
-//       query.bindValue(":typ", "1");
-//    }
-//    else
-//    {
-//        if(typeid(km).name() == typeid(Organisator).name())
-//        {
-//           query.bindValue(":typ", "2");
-//        }
-//        else
-//        {
-//            if(typeid(km).name() == typeid(Hauptorganisator).name())
-//            {
-//               query.bindValue(":typ", "3");
-//            }
-//            else
-//            {
-//                qDebug() << "Fehler: Kein gültiger Typ!";
-//            }
-//        }
-//    }
-//    query.bindValue(":kennwort", QString::fromStdString(km.getKennwort()));
-//    query.bindValue(":strasse", QString::fromStdString(km.getStrasse()));
-//    query.bindValue(":hausnummer", QString::fromStdString(km.getHausnummer()));
-//    query.bindValue(":ort", QString::fromStdString(km.getOrt()));
-//    query.bindValue(":plz", QString::fromStdString(km.getPlz()));
-
-//    if(query.exec())
-//    {
-//        return 0;
-//    }
-//    else
-//    {
-//        return 1;
-//    }
-
-//    return 1;
 }
 
 
