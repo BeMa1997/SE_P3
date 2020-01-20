@@ -32,9 +32,57 @@ int TeilnehmerListe::InsertTeilnehmer(Klassenmitglied* km, int orgaId)
 }
 
 
-int TeilnehmerListe::ModifyTeilnehmer(Klassenmitglied km, int id)
+// aktualisiert ein Klassenmitglied oder Organisator in der TeilnehmerListe
+// was soll zurückgegeben werden?
+int TeilnehmerListe::ModifyTeilnehmer(Klassenmitglied* km, int orgaId)
 {
-    //
+    int retVal = 1;
+    Klassenmitglied* left = km;
+    Klassenmitglied* right = TeilnehmerListe::Instance()->GetTeilnehmer(km->getId());
+
+
+    if ( left->getVorname() != right->getVorname() )
+    {
+        right->setVorname( left->getVorname() );
+    }
+
+    if ( left->getNachname() != right->getNachname() )
+    {
+        right->setNachname( left->getNachname() );
+    }
+
+    if ( left->getGeburtsname() != right->getGeburtsname() )
+    {
+        right->setGeburtsname( left->getGeburtsname() );
+    }
+
+    if ( left->getEmail() != right->getEmail() )
+    {
+        right->setEmail( left->getEmail() );
+    }
+
+    if ( left->getKennwort() != right->getKennwort() )
+    {
+        right->setKennwort( left->getKennwort() );
+    }
+
+    if ( left->getTelnr() != right->getTelnr() )
+    {
+        right->setTelnr( left->getTelnr() );
+    }
+
+    if ( left->getAdresse() != right->getAdresse() )
+    {
+        right->setAdresse( left->getAdresse() );
+    }
+
+    // schreibe Aenderungen aus TeilnehmerListe nach Datenbank
+    Aenderung writeBack = Aenderung(orgaId, left, Datum());
+
+    retVal = tDAO.Modify(writeBack);
+
+
+    return retVal;
 }
 
 
