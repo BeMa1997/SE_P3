@@ -205,3 +205,30 @@ bool TeilnehmerListe::Login(string eMail, string kennwort)
     return returnValue;
 }
 
+
+int TeilnehmerListe::ToOrganisator(Klassenmitglied* km, int orgaId)
+{
+    int retVal = 0;
+
+    // km in TeilnehmerListe?
+    if( TeilnehmerListe::Instance()->ContainsTeilnehmer(km) )
+    {
+        // km zu orga kopieren
+        Organisator orga = Organisator(km);
+
+        // km aus TeilnehmerListe löschen
+        teilnehmerListe.remove(*km);
+
+        // organisator in TeilnehmerListe einfügen
+        teilnehmerListe.push_back(orga);
+
+        // organisator zu Datenbank synchronisieren
+        Aenderung change = Aenderung(orgaId, &orga, Datum());
+
+        int index = tDAO.Modify(change);
+        change.setId(index);
+
+    }
+
+    return retVal;
+}
