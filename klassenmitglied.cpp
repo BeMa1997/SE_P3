@@ -13,6 +13,7 @@ Klassenmitglied::Klassenmitglied(string vorname, string nachname, string geburts
     this->adresse = adresse;
 }
 
+
 Klassenmitglied::Klassenmitglied(int id, string vorname, string nachname, string geburtsname, string eMail, string kennwort, string telNr, Adresse adresse):adresse(adresse)
 {
     this->id = id;
@@ -34,7 +35,7 @@ Aenderung* Klassenmitglied::aendern(Klassenmitglied* km, int orgaActorId, Datum 
     ptrReturn = &neueAenderung;
 
     // aenderung zu aenderungsListe des km objekts in der TeilnehmerListe hinzufügen
-    TeilnehmerListe::Instance()->GetTeilnehmer(km->getId())->GetAenderungListe()->push_back(neueAenderung);
+    TeilnehmerListe::Instance()->GetTeilnehmer(km->getId()).GetAenderungListe()->push_back(neueAenderung);
 
     return ptrReturn;
 }
@@ -44,7 +45,7 @@ bool Klassenmitglied::aendern(int id, Klassenmitglied* km, int orga, Datum datum
     Aenderung a(id, orga, km, datum);
 
     // aenderung zu aenderungsListe des km objekts in der TeilnehmerListe hinzufügen
-    TeilnehmerListe::Instance()->GetTeilnehmer(km->getId())->GetAenderungListe()->push_back(a);
+    TeilnehmerListe::Instance()->GetTeilnehmer(km->getId()).GetAenderungListe()->push_back(a);
 
     return true;
 }

@@ -9,10 +9,15 @@ int main(int argc, char *argv[])
     tn->loadTeilnehmerListe();
     qDebug() << tn->teilnehmerListe.size();
     qDebug() << tn->teilnehmerListe.begin()->getId();
-    Klassenmitglied* km2 = nullptr;
-    tn->GetTeilnehmer(1, km2);
+
+
+
+    Klassenmitglied km2 = tn->GetTeilnehmer(1);
+
     qDebug() << "GetTeilnehmer: ";
-    qDebug() << km2->getId();
+    qDebug() << km2.getId();
+
+
 
     Klassenmitglied km("Jesus", "Christ", "gott", "jesus@himmel.de", "derErloeser", "01854646",
                        Adresse("Himmelweg", "1", "Himmel", "7777", "HI"));

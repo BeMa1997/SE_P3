@@ -40,8 +40,8 @@ bool Organisator::KlassenmitgliedBearbeiten(Klassenmitglied* km)
     }
 
     // check post-condition
-    Klassenmitglied* databaseObj = TeilnehmerListe::Instance()->GetTeilnehmer(km->getId());
-    if ( databaseObj ==  km)
+    Klassenmitglied databaseObj = TeilnehmerListe::Instance()->GetTeilnehmer(km->getId());
+    if ( &databaseObj ==  km)
     {
         returnValue = true;
     }

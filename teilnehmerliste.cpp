@@ -37,15 +37,15 @@ int TeilnehmerListe::ModifyTeilnehmer(Klassenmitglied &km, int id)
 }
 
 
-Klassenmitglied* TeilnehmerListe::GetTeilnehmer(int id)
+Klassenmitglied TeilnehmerListe::GetTeilnehmer(int id)
 {
-    //
+    return tDAO.Get(id);
 }
 
 
 void TeilnehmerListe::GetTeilnehmer(int id, Klassenmitglied* km)
 {
-    tDAO.Get(id, km);
+    //tDAO.Get(id, km);
 }
 
 

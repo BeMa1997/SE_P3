@@ -17,6 +17,7 @@ class Klassenmitglied
         // das objekt in teilnehmerliste erhält diese erhalten sie erst später nach dem eintragen in die Datenbank
         Klassenmitglied(string vorname, string nachname, string geburtsname, string eMail, string kennwort, string telNr, Adresse adresse);
         Klassenmitglied(int id, string vorname, string nachname, string geburtsname, string eMail, string kennwort, string telNr, Adresse adresse);
+        Klassenmitglied() {}
 
         //getter
         int getId(){return id;}

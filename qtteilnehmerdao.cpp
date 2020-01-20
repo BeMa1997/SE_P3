@@ -4,6 +4,7 @@
 
 
 QSqlDatabase database;
+//Klassenmitglied _tmpKm = Klassenmitglied();
 
 using namespace std;
 
@@ -236,19 +237,20 @@ int QtTeilnehmerDao::Modify(Aenderung aenderung) {
 }
 
 
-bool QtTeilnehmerDao::Get(int id, Klassenmitglied *km) {
+Klassenmitglied QtTeilnehmerDao::Get(int id) {
     QSqlQuery query(database);
 
-    query.prepare("SELECT * FROM Klassenmitglied WHERE id==\":id\";");
-    query.bindValue(":id", QString::fromStdString(to_string(id)));
+    query.prepare("SELECT * FROM Klassenmitglied WHERE id==:id;");
+    query.bindValue(":id", id);
 
     if(query.exec())
     {
+        qDebug() << "In exec!";
         // query.value(0).toString();
 
         if (query.next())
         {
-            int id = query.value(0).toInt();
+            id = query.value(0).toInt();
             string vorname = query.value(1).toString().toStdString();
             string nachname = query.value(2).toString().toStdString();
             string geburtsname = query.value(3).toString().toStdString();
@@ -262,27 +264,71 @@ bool QtTeilnehmerDao::Get(int id, Klassenmitglied *km) {
             string plz = query.value(11).toString().toStdString();
             string land = query.value(12).toString().toStdString();
 
-            Klassenmitglied _km(vorname,
-                               nachname,
-                               geburtsname,
-                               email,
-                               kennwort,
-                               telnr,
-                               Adresse(strasse,
-                                       hausnr,
-                                       ort,
-                                       plz,
-                                       land));
-            km = &_km;
-            return true;
+            Klassenmitglied _tmpKm = Klassenmitglied();
+            if(typ == 1)
+            {
+                _tmpKm = Klassenmitglied(id,
+                                   vorname,
+                                   nachname,
+                                   geburtsname,
+                                   email,
+                                   kennwort,
+                                   telnr,
+                                   Adresse(strasse,
+                                           hausnr,
+                                           ort,
+                                           plz,
+                                           land));
+            }
+            else
+            {
+                if(typ == 2)
+                {
+                    _tmpKm = Organisator(id,
+                                       vorname,
+                                       nachname,
+                                       geburtsname,
+                                       email,
+                                       kennwort,
+                                       telnr,
+                                       Adresse(strasse,
+                                               hausnr,
+                                               ort,
+                                               plz,
+                                               land));
+                }
+                else
+                {
+                    if(typ == 3)
+                    {
+                        _tmpKm = Hauptorganisator(id,
+                                           vorname,
+                                           nachname,
+                                           geburtsname,
+                                           email,
+                                           kennwort,
+                                           telnr,
+                                           Adresse(strasse,
+                                                   hausnr,
+                                                   ort,
+                                                   plz,
+                                                   land));
+                    }
+                }
+            }
+
+
+            qDebug() << "Debug ID (GET)";
+            qDebug() << _tmpKm.getId();
+            return _tmpKm;
         }
     }
     else
     {
-        return false;
+        //return nullptr;
     }
 
-    return false;
+    //return nullptr;
 }
 
 
