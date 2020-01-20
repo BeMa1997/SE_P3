@@ -26,3 +26,20 @@ bool Adresse::operator ==(const Adresse& d)
 
     return returnValue;
 }
+
+
+bool Adresse::operator !=(const Adresse& d)
+{
+    bool returnValue = false;
+
+    if(strasse != d.strasse ||
+        hausnummer != d.hausnummer ||
+        ort != d.ort ||
+        plz != d.plz ||
+        land != d.land)
+    {
+            returnValue = true;
+    }
+
+    return returnValue;
+}

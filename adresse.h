@@ -16,6 +16,8 @@ class Adresse
         std::string getLand(){return land;}
 
         bool operator ==(const Adresse& d);
+        bool operator !=(const Adresse& d);
+
     private:
         std::string strasse;
         std::string hausnummer;
