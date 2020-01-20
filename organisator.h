@@ -18,6 +18,7 @@ class Organisator : public Klassenmitglied
         bool Logout();
         bool PasswortAendern(std::string alt, std::string neu);
 
+        bool operator ==(const Organisator& d);
     private:
         //nichts
 
