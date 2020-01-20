@@ -41,6 +41,7 @@ class Klassenmitglied
         void setEmail(string eMail){this->eMail = eMail;}
         void setKennwort(string kennwort){this->kennwort = kennwort;}
         void setTelnr(string telNr){this->telNr = telNr;}
+        void setAdresse(Adresse adresse){this->adresse = adresse;}
 
         Aenderung* aendern(Klassenmitglied* km, int orgaId, Datum);
 
