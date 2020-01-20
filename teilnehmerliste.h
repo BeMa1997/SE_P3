@@ -22,6 +22,7 @@ class TeilnehmerListe
         bool ContainsTeilnehmer(Klassenmitglied km);
         int SetPath(std::string path);
 
+        bool Login(std::string eMail, std::string kennwort);
 
     private:
         static TeilnehmerListe* uniqueInstance;

@@ -14,6 +14,7 @@ class Aenderung
         Klassenmitglied* getKlassenmitglied(){return mitglied;}
         Organisator* getOrganisator(){return orga;}
         Datum* getDatum(){return &datum;}
+
     private:
         int id;
         Organisator* orga;
