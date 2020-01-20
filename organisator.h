@@ -9,6 +9,7 @@ class TeilnehmerListe;
 class Organisator : public Klassenmitglied
 {
     public:
+        Organisator(int id, std::string vorname, std::string nachname, std::string geburtsname, std::string eMail, std::string kennwort, std::string telNr, Adresse adresse);
         Organisator(std::string vorname, std::string nachname, std::string geburtsname, std::string eMail, std::string kennwort, std::string telNr, Adresse adresse);
 
         bool KlassenmitgliedAnlegen(Klassenmitglied* km);
