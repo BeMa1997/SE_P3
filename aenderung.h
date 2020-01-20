@@ -15,6 +15,9 @@ class Aenderung
         Organisator* getOrganisator(){return orga;}
         Datum* getDatum(){return &datum;}
 
+        int getId(){return id;}
+        void setId(int id){this->id = id;}
+
     private:
         int id;
         Organisator* orga;
