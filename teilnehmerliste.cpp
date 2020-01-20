@@ -13,12 +13,20 @@ TeilnehmerListe* TeilnehmerListe::Instance() {
     return uniqueInstance;
 }
 
-
-int TeilnehmerListe::InsertTeilnehmer(Klassenmitglied km, int id)
+// fügt Klassenmitglied der TeilnehmerListe hinzu
+// gibt id des objekts in der Datenbank zurück
+int TeilnehmerListe::InsertTeilnehmer(Klassenmitglied* km, int orgaId)
 {
-    teilnehmerListe.insert(teilnehmerListe.end(), km);
-    int new_id = tDAO.Insert(km, id);
-    return 0;
+    // km in TeilnehmerListe einfügen (ohne id)
+    teilnehmerListe.push_back(*km);
+
+    // km in Datenbank einfügen (id wird dort zugewiesen)
+    int ret = tDAO.Insert(*km, orgaId);
+
+    // ID in das Objekt in TeilnehmerListe hinzufügen
+    TeilnehmerListe::Instance()->GetTeilnehmer(km->getId())->setId(ret);
+
+    return ret;
 }
 
 

@@ -14,7 +14,8 @@ class TeilnehmerListe
     public:
         static TeilnehmerListe* Instance();
 
-        int InsertTeilnehmer(Klassenmitglied km, int id);
+        int InsertTeilnehmer(Klassenmitglied* km, int orgaId);
+        int InsertTeilnehmer(Organisator* orga, int orgaId);
 
         int ModifyTeilnehmer(Klassenmitglied km, int id);
         Klassenmitglied* GetTeilnehmer(int id);
