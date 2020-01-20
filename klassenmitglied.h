@@ -18,6 +18,8 @@ class Klassenmitglied
 
         //getter
         int getId(){return id;}
+        list<Aenderung> GetAenderungListe(){return aenderungListe;}
+
         string getVorname(){return vorname;}
         string getNachname(){return nachname;}
         string getGeburtsname(){return geburtsname;}
@@ -39,7 +41,7 @@ class Klassenmitglied
         void setTelnr(string telNr){this->telNr = telNr;}
 
         // fehlt da nicht ein Argument?
-        bool aendern(Klassenmitglied*, int orgaId, Datum);
+        Aenderung* aendern(Klassenmitglied* km, int orgaId, Datum);
 
     private:
         int id;
