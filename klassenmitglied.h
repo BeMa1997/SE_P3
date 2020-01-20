@@ -13,10 +13,8 @@ class Organisator;
 class Klassenmitglied
 {
     public:
-        // objekte vom Typ klassenmitglied werden ohne id erzeugt,
-        // das objekt in teilnehmerliste erhält diese erhalten sie erst später nach dem eintragen in die Datenbank
-        Klassenmitglied(string vorname, string nachname, string geburtsname, string eMail, string kennwort, string telNr, Adresse adresse);
         Klassenmitglied(int id, string vorname, string nachname, string geburtsname, string eMail, string kennwort, string telNr, Adresse adresse);
+        Klassenmitglied(string vorname, string nachname, string geburtsname, string eMail, string kennwort, string telNr, Adresse adresse);
 
         //getter
         int getId(){return id;}
@@ -41,7 +39,7 @@ class Klassenmitglied
         void setTelnr(string telNr){this->telNr = telNr;}
 
         // fehlt da nicht ein Argument?
-        bool aendern(Klassenmitglied*, Organisator*, Datum);
+        bool aendern(Klassenmitglied*, int orgaId, Datum);
 
     private:
         int id;
@@ -51,9 +49,10 @@ class Klassenmitglied
         string eMail;
         string kennwort;
         string telNr;
-
         Adresse adresse;
-        list<Aenderung> aenderung;
+
+        list<Aenderung> aenderungListe;
+        int revision;
 
 };
 
