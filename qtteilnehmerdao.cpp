@@ -488,7 +488,7 @@ bool QtTeilnehmerDao::Contains(Klassenmitglied km) {
 
     QSqlQuery query(database);
 
-    query.prepare("SELECT EXISTS(SELECT 1 FROM Klassenmitglied WHERE id=\":id\" LIMIT 1);");
+    query.prepare("SELECT EXISTS(SELECT 1 FROM Klassenmitglied WHERE id=:id LIMIT 1);");
     query.bindValue(":id", QString::fromStdString(to_string(km.getId())));
 
     if(query.exec())
