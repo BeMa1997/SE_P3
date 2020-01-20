@@ -26,27 +26,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
-        adresse.cpp \
-        aenderung.cpp \
-        datum.cpp \
-        hauptorganisator.cpp \
-        klassenmitglied.cpp \
-        main.cpp \
-        organisator.cpp \
-        qtteilnehmerdao.cpp \
-        teilnehmerliste.cpp \
-        mainwindow.cpp
+        TeilnehmerListeView.cpp \
+        main.cpp
 
 HEADERS += \
-    adresse.h \
-    aenderung.h \
-    datum.h \
-    hauptorganisator.h \
-    klassenmitglied.h \
-    organisator.h \
-    qtteilnehmerdao.h \
-    teilnehmerliste.h \
-    mainwindow.h
+    TeilnehmerListeView.h
 
 FORMS += \
-    mainwindow.ui
+    TeilnehmerListeView.ui
