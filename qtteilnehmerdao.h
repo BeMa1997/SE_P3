@@ -13,11 +13,12 @@ class QtTeilnehmerDao
     public:
         QtTeilnehmerDao();
 
-        int Insert(Klassenmitglied km, int orga_id);
+        //return id des eingefügten km
+        int Insert(Klassenmitglied km, int orgaId);
         int Modify(Aenderung aenderung);
         bool Get(int kmId, Klassenmitglied &km);
         bool Contains(Klassenmitglied km);
-        bool GetTeilnehmerListe(std::list<Klassenmitglied> liste);
+        bool GetTeilnehmerListe(std::list<Klassenmitglied> &liste);
         int SetPath();
 
 
