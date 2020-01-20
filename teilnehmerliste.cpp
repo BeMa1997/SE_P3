@@ -4,7 +4,6 @@ using namespace std;
 
 TeilnehmerListe* TeilnehmerListe::uniqueInstance = nullptr;
 list<Klassenmitglied> teilnehmerListe;
-QtTeilnehmerDao tDAO;
 
 TeilnehmerListe* TeilnehmerListe::Instance() {
     if(uniqueInstance == nullptr) {
@@ -15,23 +14,15 @@ TeilnehmerListe* TeilnehmerListe::Instance() {
 }
 
 
-int TeilnehmerListe::InsertTeilnehmer(Klassenmitglied &km, int id)
+int TeilnehmerListe::InsertTeilnehmer(Klassenmitglied km, int id)
 {
     teilnehmerListe.insert(teilnehmerListe.end(), km);
-    tDAO.Insert(km, id);
+    int new_id = tDAO.Insert(km, id);
     return 0;
 }
 
 
-int TeilnehmerListe::InsertTeilnehmer(Organisator &orga)
-{
-    //
-
-    return 0;
-}
-
-
-int TeilnehmerListe::ModifyTeilnehmer(Klassenmitglied &km, int id)
+int TeilnehmerListe::ModifyTeilnehmer(Klassenmitglied km, int id)
 {
     //
 }
@@ -49,7 +40,7 @@ Klassenmitglied* TeilnehmerListe::GetTeilnehmer(string eMail)
 }
 
 
-bool TeilnehmerListe::ContainsTeilnehmer(Klassenmitglied &km)
+bool TeilnehmerListe::ContainsTeilnehmer(Klassenmitglied km)
 {
     bool returnValue = false;
 
