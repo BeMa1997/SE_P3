@@ -49,6 +49,7 @@ class Klassenmitglied
         Aenderung* aendern(Klassenmitglied* km, int orgaId, Datum);
 
     private:
+    protected:
         int id;
         string vorname;
         string nachname;
