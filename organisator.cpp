@@ -9,6 +9,12 @@ Organisator::Organisator(string vorname, string nachname, string geburtsname, st
 }
 
 
+Organisator::Organisator(Klassenmitglied* km) : Klassenmitglied(km->getId(), km->getVorname(), km->getNachname(), km->getGeburtsname(), km->getEmail(), km->getKennwort(), km->getTelnr(), km->getAdresse())
+{
+
+}
+
+
 bool Organisator::KlassenmitgliedAnlegen(Klassenmitglied* km)
 {
     bool returnValue = false;
@@ -27,6 +33,7 @@ bool Organisator::KlassenmitgliedAnlegen(Klassenmitglied* km)
 
     return returnValue;
 }
+
 
 
 bool Organisator::KlassenmitgliedBearbeiten(Klassenmitglied* km)
