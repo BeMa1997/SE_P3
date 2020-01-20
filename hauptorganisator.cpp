@@ -1,24 +1,38 @@
 #include "hauptorganisator.h"
 
-Hauptorganisator::Hauptorganisator()
+using namespace std;
+
+Hauptorganisator::Hauptorganisator(string vorname, string nachname, string geburtsname, string eMail, string kennwort, string telNr, Adresse adresse):Organisator(vorname, nachname, geburtsname, eMail, kennwort, telNr, adresse)
 {
     //const
 }
 
 
-bool KlassenmitgliedZuOrga(Klassenmitglied* km)
+bool Hauptorganisator::KlassenmitgliedZuOrga(Klassenmitglied* km)
 {
+    bool returnValue = false;
+
     //
+
+    return returnValue;
 }
 
 
-bool OrgaZuKlassenmitglied(Organisator* orga)
+bool Hauptorganisator::OrgaZuKlassenmitglied(Organisator* orga)
 {
+    bool returnValue = false;
+
     //
+
+    return returnValue;
 }
 
 
-bool PasswortZuruecksetzen(Organisator* orga)
+bool Hauptorganisator::PasswortZuruecksetzen(Organisator* orga)
 {
+    bool returnValue = false;
+
     //
+
+    return returnValue;
 }

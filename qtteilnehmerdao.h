@@ -1,28 +1,28 @@
 #ifndef QTTEILNEHMERDAO_H
 #define QTTEILNEHMERDAO_H
 
-#include <klassenmitglied.h>
-#include <vector>
 #include <QSqlDatabase>
+#include <QtSql>
+#include <list>
+#include "aenderung.h"
+
+class Klassenmitglied;
 
 class QtTeilnehmerDao
 {
-public:
-    QtTeilnehmerDao();
+    public:
+        QtTeilnehmerDao();
 
-    int InsertTeilnehmer();
-    int ModifyTeilnehmer();
-    Klassenmitglied GetTeilnehmer();
-    bool ContainsTeilnehmer();
-    vector<Klassenmitglied> GetTeilnehmerListe();
-    bool Attach();
-    bool Detach();
-    bool Notify();
-    int SetPath();
+        int Insert(Klassenmitglied km, int orga_id);
+        int Modify(Aenderung aenderung);
+        bool Get(int id, Klassenmitglied km);
+        bool Contains(Klassenmitglied km);
+        bool GetTeilnehmerListe(std::list<Klassenmitglied> liste);
+        int SetPath();
 
-private:
-    vector<Klassenmitglied> teilnehmerListe;
-    QSqlDatabase database;
+
+    private:
+        QSqlDatabase database;
 };
 
 #endif // QTTEILNEHMERDAO_H

@@ -1,37 +1,59 @@
 #ifndef KLASSENMITGLIED_H
 #define KLASSENMITGLIED_H
 
-#include <string>
-#include <vector>
-#include <aenderung.h>
-#include <adresse.h>
-//#include <organisator.h>
-#include <datum.h>
+#include <list>
+#include "datum.h"
+#include "adresse.h"
+#include "aenderung.h"
 
 using namespace std;
 
 class Organisator;
+
 class Klassenmitglied
 {
-public:
-    Klassenmitglied(string vorname, string nachname, string geburtsname, string eMail, string kennwort, string telNr);
-    Klassenmitglied();
-    ~Klassenmitglied();
+    public:
+        // objekte vom Typ klassenmitglied werden ohne id erzeugt,
+        // das objekt in teilnehmerliste erhält diese erhalten sie erst später nach dem eintragen in die Datenbank
+        Klassenmitglied(string vorname, string nachname, string geburtsname, string eMail, string kennwort, string telNr, Adresse adresse);
+        Klassenmitglied(int id, string vorname, string nachname, string geburtsname, string eMail, string kennwort, string telNr, Adresse adresse);
 
-    // fehlt da nicht ein Argument?
-    bool aendern(Klassenmitglied*, Organisator*, Datum);
+        //getter
+        int getId(){return id;}
+        string getVorname(){return vorname;}
+        string getNachname(){return nachname;}
+        string getGeburtsname(){return geburtsname;}
+        string getEmail(){return eMail;}
+        string getKennwort(){return kennwort;}
+        string getTelnr(){return telNr;}
+        string getStrasse(){return adresse.getStrasse();}
+        string getOrt(){return adresse.getOrt();}
+        string getPlz(){return adresse.getPlz();}
+        string getLand(){return adresse.getLand();}
+        string getHausnummer(){return adresse.getHausnummer();}
 
-private:
-    int id;
-    string vorname;
-    string nachname;
-    string geburtsname;
-    string eMail;
-    string kennwort;
-    string telNr;
+        //setter
+        void setVorname(string vorname){this->vorname = vorname;}
+        void setNachname(string nachname){this->nachname = nachname;}
+        void setGeburtsname(string geburtsname){this->geburtsname = geburtsname;}
+        void setEmail(string eMail){this->eMail = eMail;}
+        void setKennwort(string kennwort){this->kennwort = kennwort;}
+        void setTelnr(string telNr){this->telNr = telNr;}
 
-    Adresse adresse;
-    vector<Aenderung> aenderung;
+        // fehlt da nicht ein Argument?
+        bool aendern(Klassenmitglied*, Organisator*, Datum);
+
+    private:
+        int id;
+        string vorname;
+        string nachname;
+        string geburtsname;
+        string eMail;
+        string kennwort;
+        string telNr;
+
+        Adresse adresse;
+        list<Aenderung> aenderung;
 
 };
 

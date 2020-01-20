@@ -1,23 +1,24 @@
 #ifndef AENDERUNG_H
 #define AENDERUNG_H
 
-//#include <organisator.h>
-#include <datum.h>
-//#include <klassenmitglied.h>
+#include "datum.h"
 
-class Organisator;
 class Klassenmitglied;
+class Organisator;
+
 class Aenderung
 {
-public:
-    Aenderung(int id, Organisator* orga, Klassenmitglied* mitglied, Datum datum);
-    ~Aenderung();
-
-private:
-    int id;
-    Organisator* orga;
-    Klassenmitglied* mitglied;
-    Datum datum;
+    public:
+        Aenderung(int id, Organisator* orga, Klassenmitglied* mitglied, Datum datum);
+        int getId(){return id;}
+        Klassenmitglied* getKlassenmitglied(){return mitglied;}
+        Organisator* getOrganisator(){return orga;}
+        Datum* getDatum(){return &datum;}
+    private:
+        int id;
+        Organisator* orga;
+        Klassenmitglied* mitglied;
+        Datum datum;
 
 };
 

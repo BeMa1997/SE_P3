@@ -34,7 +34,7 @@ SOURCES += \
         main.cpp \
         organisator.cpp \
         qtteilnehmerdao.cpp \
-        teilnehmerliste.cpp
+        teilnehmerliste.cpp \
 
 HEADERS += \
     adresse.h \
@@ -44,6 +44,6 @@ HEADERS += \
     klassenmitglied.h \
     organisator.h \
     qtteilnehmerdao.h \
-    teilnehmerliste.h
+    teilnehmerliste.h \
 
 FORMS +=
