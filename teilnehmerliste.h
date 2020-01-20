@@ -19,6 +19,8 @@ class TeilnehmerListe
 
         int ModifyTeilnehmer(Klassenmitglied km, int id);
         Klassenmitglied* GetTeilnehmer(int id);
+
+        Klassenmitglied* GetTeilnehmer(int teilnehmerId);
         Klassenmitglied* GetTeilnehmer(std::string eMail);
 
         int SetPath(std::string path);

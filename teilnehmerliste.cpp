@@ -37,11 +37,21 @@ int TeilnehmerListe::ModifyTeilnehmer(Klassenmitglied km, int id)
 }
 
 
-Klassenmitglied* TeilnehmerListe::GetTeilnehmer(int id)
+Klassenmitglied* TeilnehmerListe::GetTeilnehmer(int orgaId)
 {
-    //
-}
+    Klassenmitglied* kmOut = nullptr;
 
+    for(auto x : teilnehmerListe)
+    {
+        if ( x.getId() == orgaId )
+        {
+            kmOut = &x;
+            break;
+        }
+    }
+
+    return kmOut;
+}
 
 
 Klassenmitglied* TeilnehmerListe::GetTeilnehmer(string eMail)
