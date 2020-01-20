@@ -48,7 +48,8 @@ class Klassenmitglied
 
         Aenderung* aendern(Klassenmitglied* km, int orgaId, Datum);
 
-    private:
+        // Operatoren
+        bool operator ==(const Klassenmitglied& d);
     protected:
         int id;
         string vorname;
