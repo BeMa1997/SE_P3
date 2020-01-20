@@ -20,6 +20,7 @@ class Klassenmitglied
         int getId(){return id;}
         list<Aenderung> GetAenderungListe(){return aenderungListe;}
 
+        Klassenmitglied* getThis(){return this;}
         string getVorname(){return vorname;}
         string getNachname(){return nachname;}
         string getGeburtsname(){return geburtsname;}
