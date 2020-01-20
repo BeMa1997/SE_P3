@@ -5,6 +5,7 @@
 class Datum
 {
     public:
+        Datum();
         Datum(int tag, int monat, int jahr);
         int getTag(){return tag;}
         int getMonat(){return monat;}
