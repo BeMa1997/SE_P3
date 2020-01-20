@@ -15,6 +15,7 @@ class Klassenmitglied
     public:
         Klassenmitglied(int id, string vorname, string nachname, string geburtsname, string eMail, string kennwort, string telNr, Adresse adresse);
         Klassenmitglied(string vorname, string nachname, string geburtsname, string eMail, string kennwort, string telNr, Adresse adresse);
+        Klassenmitglied(Organisator*);
 
         //getter
         int getId(){return id;}

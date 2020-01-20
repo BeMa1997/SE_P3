@@ -1,5 +1,6 @@
 #include "klassenmitglied.h"
 #include "teilnehmerliste.h"
+#include "organisator.h"
 
 
 Klassenmitglied::Klassenmitglied(int id, string vorname, string nachname, string geburtsname, string eMail, string kennwort, string telNr, Adresse adresse):adresse(adresse)
@@ -24,6 +25,16 @@ Klassenmitglied::Klassenmitglied(string vorname, string nachname, string geburts
     this->kennwort = kennwort;
     this->telNr = telNr;
     this->adresse = adresse;
+}
+
+
+Klassenmitglied::Klassenmitglied(Organisator* km) : Klassenmitglied(km->getId(), km->getVorname(), km->getNachname(), km->getGeburtsname(), km->getEmail(), km->getKennwort(), km->getTelnr(), km->getAdresse())
+{
+    list<Aenderung> _aenderungsListe = km->GetAenderungListe();
+    for (auto it : _aenderungsListe) {
+        aendern(it.getKlassenmitglied(), it.getOrganisator()->getId(), *it.getDatum());
+        this->GetAenderungListe().back().setId(it.getId());
+    }
 }
 
 
