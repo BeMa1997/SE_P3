@@ -43,11 +43,22 @@ Klassenmitglied* TeilnehmerListe::GetTeilnehmer(int id)
 }
 
 
+
 Klassenmitglied* TeilnehmerListe::GetTeilnehmer(string eMail)
 {
-    //
-}
+    Klassenmitglied* kmOut = nullptr;
 
+    for(auto x : teilnehmerListe)
+    {
+        if ( x.getEmail() == eMail )
+        {
+            kmOut = &x;
+            break;
+        }
+    }
+
+    return kmOut;
+}
 
 bool TeilnehmerListe::ContainsTeilnehmer(Klassenmitglied km)
 {
