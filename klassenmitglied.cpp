@@ -27,13 +27,17 @@ Klassenmitglied::Klassenmitglied(string vorname, string nachname, string geburts
 }
 
 
-bool Klassenmitglied::aendern(Klassenmitglied*, Organisator*, Datum)
+Aenderung* Klassenmitglied::aendern(Klassenmitglied* km, int orgaActorId, Datum dat)
 {
-    bool returnValue = false;
+    Aenderung* ptrReturn = nullptr;
 
-    //BODY
+    Aenderung neueAenderung = Aenderung(orgaActorId, km, dat);
+    ptrReturn = &neueAenderung;
 
-    return returnValue;
+    // aenderung zu aenderungsListe des km objekts in der TeilnehmerListe hinzufügen
+    TeilnehmerListe::Instance()->GetTeilnehmer(km->getId())->GetAenderungListe().push_back(neueAenderung);
+
+    return ptrReturn;
 }
 
 
