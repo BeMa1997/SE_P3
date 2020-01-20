@@ -26,19 +26,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
-        Person.cpp \
-        changepasswordwindow.cpp \
-        loginwindow.cpp \
-        main.cpp \
-        mainwindow.cpp
+        loginview.cpp \
+        main.cpp
 
 HEADERS += \
-        Person.h \
-        changepasswordwindow.h \
-        loginwindow.h \
-        mainwindow.h
+    loginview.h
 
 FORMS += \
-        changepasswordwindow.ui \
-        loginwindow.ui \
-        mainwindow.ui
+    loginview.ui
