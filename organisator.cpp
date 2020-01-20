@@ -7,21 +7,21 @@ Organisator::Organisator(string vorname, string nachname, string geburtsname, st
     // constructor
 }
 
-bool Organisator::KlassenmitgliedAnlegen(TeilnehmerListe &liste, Klassenmitglied &km)
+bool Organisator::KlassenmitgliedAnlegen(Klassenmitglied* km)
 {
     bool returnValue = false;
 
-//    // check pre-condition
-//    if ( !liste.ContainsTeilnehmer(km) )
-//    {
-//        liste.InsertTeilnehmer(km);
-//    }
+    // check pre-condition
+    if ( ! TeilnehmerListe::Instance()->ContainsTeilnehmer(*km) )
+    {
+        TeilnehmerListe::Instance()->InsertTeilnehmer(*km);
+    }
 
-//    // check post-condition
-//    if ( liste.ContainsTeilnehmer(km) )
-//    {
-//        returnValue = true;
-//    }
+    // check post-condition
+    if ( TeilnehmerListe::Instance()->ContainsTeilnehmer(*km) )
+    {
+        returnValue = true;
+    }
 
     return returnValue;
 }
