@@ -14,6 +14,7 @@ TeilnehmerListe* TeilnehmerListe::Instance() {
     return uniqueInstance;
 }
 
+
 // fügt Klassenmitglied der TeilnehmerListe hinzu
 // gibt id des objekts in der Datenbank zurück
 int TeilnehmerListe::InsertTeilnehmer(Klassenmitglied* km, int orgaId)
@@ -155,3 +156,4 @@ bool TeilnehmerListe::Login(string eMail, string kennwort)
 
     return returnValue;
 }
+
