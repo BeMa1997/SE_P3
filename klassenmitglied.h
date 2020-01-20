@@ -42,7 +42,6 @@ class Klassenmitglied
         void setKennwort(string kennwort){this->kennwort = kennwort;}
         void setTelnr(string telNr){this->telNr = telNr;}
 
-        // fehlt da nicht ein Argument?
         Aenderung* aendern(Klassenmitglied* km, int orgaId, Datum);
 
     private:
@@ -56,7 +55,6 @@ class Klassenmitglied
         Adresse adresse;
 
         list<Aenderung> aenderungListe;
-        int revision;
 
 };
 
