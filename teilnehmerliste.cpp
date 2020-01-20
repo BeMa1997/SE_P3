@@ -89,6 +89,24 @@ bool TeilnehmerListe::ContainsTeilnehmer(Klassenmitglied* km)
 }
 
 
+// überprüft ob Organisator orga in der TeilnehmerListe enthalten ist (anhand des gesamten Objekts)
+bool TeilnehmerListe::ContainsTeilnehmer(Organisator* orga)
+{
+    bool returnValue = false;
+
+    for(auto x : teilnehmerListe)
+    {
+        if ( &x == reinterpret_cast<Klassenmitglied*>(orga) )
+        {
+            returnValue = true;
+            break;
+        }
+    }
+
+    return returnValue;
+}
+
+
 // was soll diese Funktion tun?
 int TeilnehmerListe::SetPath(string path)
 {
