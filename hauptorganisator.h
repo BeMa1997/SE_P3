@@ -11,7 +11,7 @@ class Hauptorganisator : public Organisator
 
         bool KlassenmitgliedZuOrga(Klassenmitglied* km);
         bool OrgaZuKlassenmitglied(Organisator* orga);
-        bool PasswortZuruecksetzen(Organisator* orga);
+        bool PasswortZuruecksetzen(Organisator* orga, string pwNeu);
 
     private:
         //nichts

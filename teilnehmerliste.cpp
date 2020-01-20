@@ -66,3 +66,18 @@ int TeilnehmerListe::SetPath(string path)
 
     return 0;
 }
+
+
+// loggt einen user lokal ein
+bool TeilnehmerListe::Login(string eMail, string kennwort)
+{
+    bool returnValue = false;
+
+    if ( ContainsTeilnehmer(eMail) )
+    {
+        currentUser = GetTeilnehmer(eMail);
+        returnValue = true;
+    }
+
+    return returnValue;
+}
