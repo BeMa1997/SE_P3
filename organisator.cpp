@@ -8,21 +8,23 @@ Organisator::Organisator(string vorname, string nachname, string geburtsname, st
     // constructor
 }
 
+
 bool Organisator::KlassenmitgliedAnlegen(Klassenmitglied* km)
 {
     bool returnValue = false;
 
-    // check pre-condition
-    if ( ! TeilnehmerListe::Instance()->ContainsTeilnehmer(*km) )
+    // km noch nicht in TeilnehmerListe
+    if ( ! TeilnehmerListe::Instance()->ContainsTeilnehmer(km) )
     {
-        TeilnehmerListe::Instance()->InsertTeilnehmer(*km);
+        TeilnehmerListe::Instance()->InsertTeilnehmer(km, this->getId());
     }
 
-    // check post-condition
-    if ( TeilnehmerListe::Instance()->ContainsTeilnehmer(*km) )
-    {
-        returnValue = true;
-    }
+        // km jetzt in TeilnehmerListe
+        if ( TeilnehmerListe::Instance()->ContainsTeilnehmer(km) )
+        {
+            returnValue = true;
+        }
+    }    
 
     return returnValue;
 }
