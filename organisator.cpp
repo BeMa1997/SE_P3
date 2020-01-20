@@ -11,7 +11,11 @@ Organisator::Organisator(string vorname, string nachname, string geburtsname, st
 
 Organisator::Organisator(Klassenmitglied* km) : Klassenmitglied(km->getId(), km->getVorname(), km->getNachname(), km->getGeburtsname(), km->getEmail(), km->getKennwort(), km->getTelnr(), km->getAdresse())
 {
-
+    list<Aenderung> _aenderungsListe = km->GetAenderungListe();
+    for (auto it : _aenderungsListe) {
+        aendern(it.getKlassenmitglied(), it.getOrganisator()->getId(), *it.getDatum());
+        this->GetAenderungListe().back().setId(it.getId());
+    }
 }
 
 
