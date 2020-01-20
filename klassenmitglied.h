@@ -27,10 +27,13 @@ class Klassenmitglied
         string getEmail(){return eMail;}
         string getKennwort(){return kennwort;}
         string getTelnr(){return telNr;}
-        string getStrasse(){return adresse.getStrasse();}
-        string getOrt(){return adresse.getOrt();}
-        string getPlz(){return adresse.getPlz();}
+        Adresse getAdresse(){return adresse;}
+
+        // Adresse
         string getLand(){return adresse.getLand();}
+        string getPlz(){return adresse.getPlz();}
+        string getOrt(){return adresse.getOrt();}
+        string getStrasse(){return adresse.getStrasse();}
         string getHausnummer(){return adresse.getHausnummer();}
 
         //setter
