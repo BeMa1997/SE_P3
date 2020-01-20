@@ -15,7 +15,7 @@ TeilnehmerListe* TeilnehmerListe::Instance() {
 }
 
 
-int InsertTeilnehmer(Klassenmitglied &km)
+int TeilnehmerListe::InsertTeilnehmer(Klassenmitglied &km)
 {
     teilnehmerListe.insert(teilnehmerListe.end(), km);
     tDAO.Insert(km);
@@ -23,7 +23,7 @@ int InsertTeilnehmer(Klassenmitglied &km)
 }
 
 
-int InsertTeilnehmer(Organisator &orga)
+int TeilnehmerListe::InsertTeilnehmer(Organisator &orga)
 {
     //
 
@@ -31,25 +31,25 @@ int InsertTeilnehmer(Organisator &orga)
 }
 
 
-int ModifyTeilnehmer(Klassenmitglied &km)
+int TeilnehmerListe::ModifyTeilnehmer(Klassenmitglied &km)
 {
     //
 }
 
 
-Klassenmitglied* GetTeilnehmer(int id)
+Klassenmitglied* TeilnehmerListe::GetTeilnehmer(int id)
 {
     //
 }
 
 
-Klassenmitglied* GetTeilnehmer(string eMail)
+Klassenmitglied* TeilnehmerListe::GetTeilnehmer(string eMail)
 {
     //
 }
 
 
-bool ContainsTeilnehmer(Klassenmitglied &km)
+bool TeilnehmerListe::ContainsTeilnehmer(Klassenmitglied &km)
 {
     bool returnValue = false;
 
@@ -60,7 +60,7 @@ bool ContainsTeilnehmer(Klassenmitglied &km)
 
 
 // was soll diese Funktion tun?
-int SetPath(string path)
+int TeilnehmerListe::SetPath(string path)
 {
     //
 
