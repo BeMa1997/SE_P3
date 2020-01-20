@@ -14,13 +14,12 @@ class TeilnehmerListe
     public:
         static TeilnehmerListe* Instance();
 
-        int InsertTeilnehmer(Klassenmitglied &km, int id);
-        int InsertTeilnehmer(Organisator &orga);
+        int InsertTeilnehmer(Klassenmitglied km, int id);
 
-        int ModifyTeilnehmer(Klassenmitglied &km, int id);
+        int ModifyTeilnehmer(Klassenmitglied km, int id);
         Klassenmitglied* GetTeilnehmer(int id);
         Klassenmitglied* GetTeilnehmer(std::string eMail);
-        bool ContainsTeilnehmer(Klassenmitglied &km);
+        bool ContainsTeilnehmer(Klassenmitglied km);
         int SetPath(std::string path);
 
         bool Login(std::string eMail, std::string kennwort);
