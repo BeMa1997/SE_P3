@@ -53,11 +53,22 @@ bool Organisator::KlassenmitgliedBearbeiten(Klassenmitglied* km)
 }
 
 
-bool Organisator::Login(string eMail, string password)
+bool Organisator::Logout()
 {
     bool returnValue = false;
 
-    //
+    // wenn der organisator, welcher "logout" aufruft, auch wirklich der eingeloggte user ist:
+    if ( reinterpret_cast<Klassenmitglied*>(this) == TeilnehmerListe::Instance()->getCurrentUser() )
+    {
+        // currentUser := null
+        TeilnehmerListe::Instance()->setCurrentUser(nullptr);
+
+        // wenn Zuweisung funktioniert hat, erfolgreich terminieren
+        if ( TeilnehmerListe::Instance()->getCurrentUser() == nullptr )
+        {
+            returnValue = true;
+        }
+    }
 
     return returnValue;
 }
