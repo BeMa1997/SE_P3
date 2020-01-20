@@ -1,9 +1,16 @@
 #include "aenderung.h"
 
-Aenderung::Aenderung(int id, Organisator* orga, Klassenmitglied* mitglied, Datum datum): datum(datum)
+Aenderung::Aenderung(int id, int orga, Klassenmitglied* mitglied, Datum datum):datum(datum)
 {
     this->id = id;
-    this->orga = orga;
+    this->orga_id = orga;
+    this->mitglied = mitglied;
+    this->datum = datum;
+}
+
+Aenderung::Aenderung(int orgaId, Klassenmitglied* mitglied, Datum datum):datum(datum)
+{
+    this->orga_id = orgaId;
     this->mitglied = mitglied;
     this->datum = datum;
 }
