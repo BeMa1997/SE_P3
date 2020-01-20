@@ -218,19 +218,169 @@ int QtTeilnehmerDao::Modify(Aenderung aenderung) {
     query.bindValue(":erfasst", aenderung.getKlassenmitglied()->getId());
     query.bindValue(":taetigt", aenderung.getOrgaId());
 
-    Klassenmitglied* tmp_km = nullptr;
-
-    //Get(aenderung.getKlassenmitglied()->getId(), *tmp_km);
-
-    //qDebug
-
+    int aenderungsId;
     if(query.exec())
     {
-        return query.lastInsertId().toInt();
+        aenderungsId = query.lastInsertId().toInt();
     }
     else
     {
         return -1;
+    }
+
+    query.clear();
+    Klassenmitglied tmp_km = Get(aenderung.getKlassenmitglied()->getId());
+
+    // UPDATE kunden SET name = 'Donald Duck', adresse = 'Entenhausen' WHERE name = 'Emil Entenich'
+    if(!tmp_km.getVorname().compare(aenderung.getKlassenmitglied()->getVorname()))
+    {
+        query.prepare("UPDATE Klassenmitglied SET vorname=:vorname WHERE id=:id");
+        query.bindValue(":vorname", QString::fromStdString(aenderung.getKlassenmitglied()->getVorname()));
+        query.bindValue(":id", aenderung.getKlassenmitglied()->getId());
+        if(!query.exec())
+        {
+            return -1;
+        }
+    }
+    query.clear();
+    if(!tmp_km.getNachname().compare(aenderung.getKlassenmitglied()->getNachname()))
+    {
+        query.prepare("UPDATE Klassenmitglied SET nachname=:nachname WHERE id=:id");
+        query.bindValue(":nachname", QString::fromStdString(aenderung.getKlassenmitglied()->getNachname()));
+        query.bindValue(":id", aenderung.getKlassenmitglied()->getId());
+        if(!query.exec())
+        {
+            return -1;
+        }
+    }
+    query.clear();
+    if(!tmp_km.getGeburtsname().compare(aenderung.getKlassenmitglied()->getGeburtsname()))
+    {
+        query.prepare("UPDATE Klassenmitglied SET geburtsname=:geburtsname WHERE id=:id");
+        query.bindValue(":geburtsname", QString::fromStdString(aenderung.getKlassenmitglied()->getGeburtsname()));
+        query.bindValue(":id", aenderung.getKlassenmitglied()->getId());
+        if(!query.exec())
+        {
+            return -1;
+        }
+    }
+    query.clear();
+    if(!tmp_km.getTelnr().compare(aenderung.getKlassenmitglied()->getTelnr()))
+    {
+        query.prepare("UPDATE Klassenmitglied SET teln=:teln WHERE id=:id");
+        query.bindValue(":teln", QString::fromStdString(aenderung.getKlassenmitglied()->getTelnr()));
+        query.bindValue(":id", aenderung.getKlassenmitglied()->getId());
+        if(!query.exec())
+        {
+            return -1;
+        }
+    }
+    query.clear();
+    if(!tmp_km.getKennwort().compare(aenderung.getKlassenmitglied()->getKennwort()))
+    {
+        query.prepare("UPDATE Klassenmitglied SET kennwort=:teln WHERE id=:id");
+        query.bindValue(":teln", QString::fromStdString(aenderung.getKlassenmitglied()->getKennwort()));
+        query.bindValue(":id", aenderung.getKlassenmitglied()->getId());
+        if(!query.exec())
+        {
+            return -1;
+        }
+    }
+    query.clear();
+    if(!tmp_km.getStrasse().compare(aenderung.getKlassenmitglied()->getStrasse()))
+    {
+        query.prepare("UPDATE Klassenmitglied SET strasse=:teln WHERE id=:id");
+        query.bindValue(":teln", QString::fromStdString(aenderung.getKlassenmitglied()->getStrasse()));
+        query.bindValue(":id", aenderung.getKlassenmitglied()->getId());
+        if(!query.exec())
+        {
+            return -1;
+        }
+    }
+    query.clear();
+    if(!tmp_km.getHausnummer().compare(aenderung.getKlassenmitglied()->getHausnummer()))
+    {
+        query.prepare("UPDATE Klassenmitglied SET hausnr=:teln WHERE id=:id");
+        query.bindValue(":teln", QString::fromStdString(aenderung.getKlassenmitglied()->getHausnummer()));
+        query.bindValue(":id", aenderung.getKlassenmitglied()->getId());
+        if(!query.exec())
+        {
+            return -1;
+        }
+    }
+    query.clear();
+    if(!tmp_km.getOrt().compare(aenderung.getKlassenmitglied()->getOrt()))
+    {
+        query.prepare("UPDATE Klassenmitglied SET ort=:teln WHERE id=:id");
+        query.bindValue(":teln", QString::fromStdString(aenderung.getKlassenmitglied()->getOrt()));
+        query.bindValue(":id", aenderung.getKlassenmitglied()->getId());
+        if(!query.exec())
+        {
+            return -1;
+        }
+    }
+    query.clear();
+    if(!tmp_km.getPlz().compare(aenderung.getKlassenmitglied()->getPlz()))
+    {
+        query.prepare("UPDATE Klassenmitglied SET plz=:teln WHERE id=:id");
+        query.bindValue(":teln", QString::fromStdString(aenderung.getKlassenmitglied()->getPlz()));
+        query.bindValue(":id", aenderung.getKlassenmitglied()->getId());
+        if(!query.exec())
+        {
+            return -1;
+        }
+    }
+    query.clear();
+    if(!tmp_km.getLand().compare(aenderung.getKlassenmitglied()->getLand()))
+    {
+        query.prepare("UPDATE Klassenmitglied SET land=:teln WHERE id=:id");
+        query.bindValue(":teln", QString::fromStdString(aenderung.getKlassenmitglied()->getLand()));
+        query.bindValue(":id", aenderung.getKlassenmitglied()->getId());
+        if(!query.exec())
+        {
+            return -1;
+        }
+    }
+    query.clear();
+    if(typeid(aenderung.getKlassenmitglied()).name() == typeid(Klassenmitglied).name())
+    {
+        query.prepare("UPDATE Klassenmitglied SET typ=:teln WHERE id=:id");
+        query.bindValue(":teln", 1);
+        query.bindValue(":id", aenderung.getKlassenmitglied()->getId());
+        if(!query.exec())
+        {
+            return -1;
+        }
+    }
+    else
+    {
+        if(typeid(aenderung.getKlassenmitglied()).name() == typeid(Organisator).name())
+        {
+            query.prepare("UPDATE Klassenmitglied SET typ=:teln WHERE id=:id");
+            query.bindValue(":teln", 2);
+            query.bindValue(":id", aenderung.getKlassenmitglied()->getId());
+            if(!query.exec())
+            {
+                return -1;
+            }
+        }
+        else
+        {
+            if(typeid(aenderung.getKlassenmitglied()).name() == typeid(Hauptorganisator).name())
+            {
+                query.prepare("UPDATE Klassenmitglied SET typ=:teln WHERE id=:id");
+                query.bindValue(":teln", 3);
+                query.bindValue(":id", aenderung.getKlassenmitglied()->getId());
+                if(!query.exec())
+                {
+                    return -1;
+                }
+            }
+            else
+            {
+                return -1;
+            }
+        }
     }
 
     return -1;
