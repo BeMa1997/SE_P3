@@ -8,9 +8,9 @@ QSqlDatabase database;
 using namespace std;
 
 QtTeilnehmerDao::QtTeilnehmerDao() {
-    QSqlQuery query(database);
     if(!QFile::exists("klassentreffen.db"))
     {
+
         database = QSqlDatabase::addDatabase("QSQLITE");
         database.setDatabaseName("klassentreffen.db");
         if (!database.open())
@@ -22,8 +22,10 @@ QtTeilnehmerDao::QtTeilnehmerDao() {
             qDebug() << "OK: Datenbank verbunden.";
         }
 
-        if(QFile::exists("klassentreffen.db"))
+        if(QFile::exists("klassentreffen_schema.sql"))
         {
+            QSqlQuery query(database);
+            qDebug() << "Not exist...";
             QFile schemaFile("klassentreffen_schema.sql");
             schemaFile.open(QFile::ReadOnly);
             QStringList schemaTableList = QString(schemaFile.readAll()).split(";");
@@ -31,8 +33,10 @@ QtTeilnehmerDao::QtTeilnehmerDao() {
             {
                 query.exec(schemaTable);
             }
-
+            qDebug() << "Vor close...!";
             schemaFile.close();
+            qDebug() << "Nach close...";
+            query.clear();
         }
         else
         {
@@ -41,6 +45,7 @@ QtTeilnehmerDao::QtTeilnehmerDao() {
     }
     else
     {
+        qDebug() << "Lol";
         database = QSqlDatabase::addDatabase("QSQLITE");
         database.setDatabaseName("klassentreffen.db");
         if (!database.open())
@@ -58,11 +63,12 @@ QtTeilnehmerDao::QtTeilnehmerDao() {
 int QtTeilnehmerDao::Insert(Klassenmitglied km, int orga_id) {
     QSqlQuery query(database);
     query.prepare("INSERT INTO Klassenmitglied ("
+                  //"id, "
                   "vorname, "
                   "nachname, "
                   "geburtsname, "
                   "email, "
-                  "telnr, "
+                  "teln, "
                   "typ, "
                   "kennwort, "
                   "strasse, "
@@ -71,6 +77,7 @@ int QtTeilnehmerDao::Insert(Klassenmitglied km, int orga_id) {
                   "plz, "
                   "land) "
                   "VALUES ("
+                  //":id, "
                   ":vorname, "
                   ":nachname, "
                   ":geburtsname,"
@@ -83,6 +90,7 @@ int QtTeilnehmerDao::Insert(Klassenmitglied km, int orga_id) {
                   ":ort, "
                   ":plz, "
                   ":land)");
+    //query.bindValue(":id", 0);
     query.bindValue(":vorname", QString::fromStdString(km.getVorname()));
     query.bindValue(":nachname", QString::fromStdString(km.getNachname()));
     query.bindValue(":geburtsname", QString::fromStdString(km.getGeburtsname()));
@@ -106,20 +114,21 @@ int QtTeilnehmerDao::Insert(Klassenmitglied km, int orga_id) {
             }
             else
             {
-                qDebug() << "Fehler: Kein gültiger Typ!";
+                return -1;
             }
         }
     }
     query.bindValue(":kennwort", QString::fromStdString(km.getKennwort()));
     query.bindValue(":strasse", QString::fromStdString(km.getStrasse()));
-    query.bindValue(":hausnummer", QString::fromStdString(km.getHausnummer()));
+    query.bindValue(":hausnr", QString::fromStdString(km.getHausnummer()));
     query.bindValue(":ort", QString::fromStdString(km.getOrt()));
     query.bindValue(":plz", QString::fromStdString(km.getPlz()));
     query.bindValue(":land", QString::fromStdString(km.getLand()));
 
     if(query.exec())
     {
-        return 0;
+
+        return query.lastInsertId().toInt();
     }
     else
     {
@@ -217,7 +226,7 @@ int QtTeilnehmerDao::Modify(Aenderung aenderung) {
 }
 
 
-bool QtTeilnehmerDao::Get(int id, Klassenmitglied km) {
+bool QtTeilnehmerDao::Get(int id, Klassenmitglied &km) {
     QSqlQuery query(database);
 
     query.prepare("SELECT * FROM Klassenmitglied WHERE id==\":id\";");
