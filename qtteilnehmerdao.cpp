@@ -55,7 +55,7 @@ QtTeilnehmerDao::QtTeilnehmerDao() {
 }
 
 
-int QtTeilnehmerDao::Insert(Klassenmitglied &km, int orga_id) {
+int QtTeilnehmerDao::Insert(Klassenmitglied km, int orga_id) {
     QSqlQuery query(database);
     query.prepare("INSERT INTO Klassenmitglied ("
                   "vorname, "
@@ -69,8 +69,7 @@ int QtTeilnehmerDao::Insert(Klassenmitglied &km, int orga_id) {
                   "hausnr, "
                   "ort, "
                   "plz, "
-                  "land, "
-                  "erfasst) "
+                  "land) "
                   "VALUES ("
                   ":vorname, "
                   ":nachname, "
@@ -83,8 +82,7 @@ int QtTeilnehmerDao::Insert(Klassenmitglied &km, int orga_id) {
                   ":hausnr, "
                   ":ort, "
                   ":plz, "
-                  ":land, "
-                  ":erfasst)");
+                  ":land)");
     query.bindValue(":vorname", QString::fromStdString(km.getVorname()));
     query.bindValue(":nachname", QString::fromStdString(km.getNachname()));
     query.bindValue(":geburtsname", QString::fromStdString(km.getGeburtsname()));
@@ -118,7 +116,6 @@ int QtTeilnehmerDao::Insert(Klassenmitglied &km, int orga_id) {
     query.bindValue(":ort", QString::fromStdString(km.getOrt()));
     query.bindValue(":plz", QString::fromStdString(km.getPlz()));
     query.bindValue(":land", QString::fromStdString(km.getLand()));
-    query.bindValue(":erfasst", id);
 
     if(query.exec())
     {
@@ -133,7 +130,7 @@ int QtTeilnehmerDao::Insert(Klassenmitglied &km, int orga_id) {
 }
 
 
-int QtTeilnehmerDao::Modify(Aenderung &aenderung) {
+int QtTeilnehmerDao::Modify(Aenderung aenderung) {
     QSqlQuery query(database);
 
     query.prepare("INSERT INTO Aenderung ("
@@ -174,25 +171,25 @@ int QtTeilnehmerDao::Modify(Aenderung &aenderung) {
     ":land, "
     ":erfasst, "
     ":taetigt)");
-    query.bindValue(":id", QString::fromStdString(to_string(id)));
-    query.bindValue(":vorname", QString::fromStdString(km.getVorname()));
-    query.bindValue(":nachname", QString::fromStdString(km.getNachname()));
-    query.bindValue(":geburtsname", QString::fromStdString(km.getGeburtsname()));
-    query.bindValue(":email", QString::fromStdString(km.getEmail()));
-    query.bindValue(":teln", QString::fromStdString(km.getTelnr()));
-    if(typeid(km).name() == typeid(Klassenmitglied).name())
+    query.bindValue(":id", aenderung.getId());
+    query.bindValue(":vorname", QString::fromStdString(aenderung.getKlassenmitglied()->getVorname()));
+    query.bindValue(":nachname", QString::fromStdString(aenderung.getKlassenmitglied()->getNachname()));
+    query.bindValue(":geburtsname", QString::fromStdString(aenderung.getKlassenmitglied()->getGeburtsname()));
+    query.bindValue(":email", QString::fromStdString(aenderung.getKlassenmitglied()->getEmail()));
+    query.bindValue(":teln", QString::fromStdString(aenderung.getKlassenmitglied()->getTelnr()));
+    if(typeid(aenderung.getKlassenmitglied()).name() == typeid(Klassenmitglied).name())
     {
         query.bindValue(":typ", "1");
     }
     else
     {
-        if(typeid(km).name() == typeid(Organisator).name())
+        if(typeid(aenderung.getKlassenmitglied()).name() == typeid(Organisator).name())
         {
             query.bindValue(":typ", "2");
         }
         else
         {
-            if(typeid(km).name() == typeid(Hauptorganisator).name())
+            if(typeid(aenderung.getKlassenmitglied()).name() == typeid(Hauptorganisator).name())
             {
                 query.bindValue(":typ", "3");
             }
@@ -202,12 +199,12 @@ int QtTeilnehmerDao::Modify(Aenderung &aenderung) {
             }
         }
     }
-    query.bindValue(":kennwort", QString::fromStdString(km.getKennwort()));
-    query.bindValue(":strasse", QString::fromStdString(km.getStrasse()));
-    query.bindValue(":hausnummer", QString::fromStdString(km.getHausnummer()));
-    query.bindValue(":ort", QString::fromStdString(km.getOrt()));
-    query.bindValue(":plz", QString::fromStdString(km.getPlz()));
-    query.bindValue(":land", QString::fromStdString(km.getLand()));
+    query.bindValue(":kennwort", QString::fromStdString(aenderung.getKlassenmitglied()->getKennwort()));
+    query.bindValue(":strasse", QString::fromStdString(aenderung.getKlassenmitglied()->getStrasse()));
+    query.bindValue(":hausnummer", QString::fromStdString(aenderung.getKlassenmitglied()->getHausnummer()));
+    query.bindValue(":ort", QString::fromStdString(aenderung.getKlassenmitglied()->getOrt()));
+    query.bindValue(":plz", QString::fromStdString(aenderung.getKlassenmitglied()->getPlz()));
+    query.bindValue(":land", QString::fromStdString(aenderung.getKlassenmitglied()->getLand()));
 
     if(query.exec())
     {
@@ -220,7 +217,7 @@ int QtTeilnehmerDao::Modify(Aenderung &aenderung) {
 }
 
 
-bool QtTeilnehmerDao::Get(int id, Klassenmitglied& km) {
+bool QtTeilnehmerDao::Get(int id, Klassenmitglied km) {
     QSqlQuery query(database);
 
     query.prepare("SELECT * FROM Klassenmitglied WHERE id==\":id\";");
@@ -270,7 +267,7 @@ bool QtTeilnehmerDao::Get(int id, Klassenmitglied& km) {
 }
 
 
-bool QtTeilnehmerDao::Contains(Klassenmitglied &km) {
+bool QtTeilnehmerDao::Contains(Klassenmitglied km) {
 
     bool returnValue = false;
 
@@ -294,7 +291,7 @@ bool QtTeilnehmerDao::Contains(Klassenmitglied &km) {
 }
 
 
-bool QtTeilnehmerDao::GetTeilnehmerListe(list<Klassenmitglied> &lkm) {
+bool QtTeilnehmerDao::GetTeilnehmerListe(list<Klassenmitglied> lkm) {
     QSqlQuery query(database);
 
     query.prepare("SELECT * FROM Klassenmitglied;");
