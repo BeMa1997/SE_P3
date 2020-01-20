@@ -1,4 +1,5 @@
 #include "klassenmitglied.h"
+#include "teilnehmerliste.h"
 
 
 Klassenmitglied::Klassenmitglied(int id, string vorname, string nachname, string geburtsname, string eMail, string kennwort, string telNr, Adresse adresse):adresse(adresse)

@@ -2,9 +2,6 @@
 #include "hauptorganisator.h"
 #include <string>
 
-
-QSqlDatabase database;
-
 using namespace std;
 
 QtTeilnehmerDao::QtTeilnehmerDao() {

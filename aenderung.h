@@ -9,8 +9,8 @@ class Organisator;
 class Aenderung
 {
     public:
-        Aenderung(int id, Organisator* orga, Klassenmitglied* mitglied, Datum datum);
-        int getId(){return id;}
+        Aenderung(int orgaId, Klassenmitglied* mitglied, Datum datum);
+
         Klassenmitglied* getKlassenmitglied(){return mitglied;}
         Organisator* getOrganisator(){return orga;}
         Datum* getDatum(){return &datum;}
