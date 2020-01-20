@@ -6,7 +6,7 @@
 class Adresse
 {
     public:
-        Adresse();
+    Adresse() {};
         Adresse(std::string strasse, std::string hausnummer, std::string ort, std::string plz, std::string land);
 
         std::string getStrasse(){return strasse;}

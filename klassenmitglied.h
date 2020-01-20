@@ -13,8 +13,11 @@ class Organisator;
 class Klassenmitglied
 {
     public:
-        Klassenmitglied(int id, string vorname, string nachname, string geburtsname, string eMail, string kennwort, string telNr, Adresse adresse);
+        // objekte vom Typ klassenmitglied werden ohne id erzeugt,
+        // das objekt in teilnehmerliste erhält diese erhalten sie erst später nach dem eintragen in die Datenbank
         Klassenmitglied(string vorname, string nachname, string geburtsname, string eMail, string kennwort, string telNr, Adresse adresse);
+        Klassenmitglied(int id, string vorname, string nachname, string geburtsname, string eMail, string kennwort, string telNr, Adresse adresse);
+        Klassenmitglied() {}
 
         //getter
         int getId(){return id;}
@@ -29,6 +32,7 @@ class Klassenmitglied
         string getPlz(){return adresse.getPlz();}
         string getLand(){return adresse.getLand();}
         string getHausnummer(){return adresse.getHausnummer();}
+        list<Aenderung>* GetAenderungListe(){return &aenderung;}
 
         //setter
         void setVorname(string vorname){this->vorname = vorname;}
@@ -39,7 +43,8 @@ class Klassenmitglied
         void setTelnr(string telNr){this->telNr = telNr;}
 
         // fehlt da nicht ein Argument?
-        bool aendern(Klassenmitglied*, int orgaId, Datum);
+        Aenderung* aendern(Klassenmitglied*, int, Datum);
+        bool aendern(int, Klassenmitglied*, int, Datum);
 
     private:
         int id;
@@ -49,10 +54,9 @@ class Klassenmitglied
         string eMail;
         string kennwort;
         string telNr;
-        Adresse adresse;
 
-        list<Aenderung> aenderungListe;
-        int revision;
+        Adresse adresse;
+        list<Aenderung> aenderung;
 
 };
 

@@ -15,9 +15,9 @@ class QtTeilnehmerDao
 
         int Insert(Klassenmitglied km, int orga_id);
         int Modify(Aenderung aenderung);
-        bool Get(int id, Klassenmitglied km);
+        Klassenmitglied Get(int id);
         bool Contains(Klassenmitglied km);
-        bool GetTeilnehmerListe(std::list<Klassenmitglied> liste);
+        bool GetTeilnehmerListe(std::list<Klassenmitglied>* liste);
         int SetPath();
 
 

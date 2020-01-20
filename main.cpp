@@ -1,34 +1,33 @@
-//#include "loginwindow.h"
-#include "iostream"
-
-using namespace std;
-
-#include <QtSql>
-#include <QApplication>
-
-//DB-Verbindung (mit SQLite-Treiber "QSlite") herstellen.
-void openDB() {
-
-    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("C:\\Users\\Andreas\\Documents\\soft_eng\\SE_P3\\Datenbank.db");
-    db.setDatabaseName("..\\data\\Datenbank.db");
-
-    if (!db.open()){
-        cerr << "Datenbank Verbindung ist gescheitert" << endl;
-        exit(1);
-    }
-}
+#include <QCoreApplication>
+#include "teilnehmerliste.h"
 
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
+    QCoreApplication a(argc, argv);
 
-    //openDB();
+    TeilnehmerListe *tn = TeilnehmerListe::Instance();
+    tn->loadTeilnehmerListe();
+    qDebug() << tn->teilnehmerListe.size();
+    qDebug() << tn->teilnehmerListe.begin()->getId();
 
-    //loginwindow login;
 
-    //login.show();
-    //w.show();
+
+    Klassenmitglied km2 = tn->GetTeilnehmer(1);
+
+    qDebug() << "GetTeilnehmer: ";
+    qDebug() << km2.getId();
+
+
+
+    Klassenmitglied km("Jesus", "Christ", "gott", "jesus@himmel.de", "derErloeser", "01854646",
+                       Adresse("Himmelweg", "1", "Himmel", "7777", "HI"));
+    int new_id = tn->InsertTeilnehmer(km, 0);
+    qDebug() << new_id;
+
+    Klassenmitglied km1("Jesus", "Christ", "gott", "jesus.christ@himmel.de", "derErloeser", "01854646",
+                       Adresse("Himmelweg", "1", "Himmel", "7777", "HI"));
+    new_id = tn->InsertTeilnehmer(km1, 0);
+    qDebug() << new_id;
 
     return a.exec();
 }

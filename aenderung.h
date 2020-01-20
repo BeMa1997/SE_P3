@@ -9,15 +9,15 @@ class Organisator;
 class Aenderung
 {
     public:
-        Aenderung(int id, Organisator* orga, Klassenmitglied* mitglied, Datum datum);
+        Aenderung(int, int, Klassenmitglied*, Datum);
+        Aenderung(int, Klassenmitglied*, Datum);
         int getId(){return id;}
         Klassenmitglied* getKlassenmitglied(){return mitglied;}
-        Organisator* getOrganisator(){return orga;}
+        int getOrgaId(){return orga_id;}
         Datum* getDatum(){return &datum;}
-
     private:
         int id;
-        Organisator* orga;
+        int orga_id;
         Klassenmitglied* mitglied;
         Datum datum;
 

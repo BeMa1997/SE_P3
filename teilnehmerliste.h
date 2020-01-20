@@ -16,18 +16,21 @@ class TeilnehmerListe
 
         int InsertTeilnehmer(Klassenmitglied km, int id);
 
-        int ModifyTeilnehmer(Klassenmitglied km, int id);
-        Klassenmitglied* GetTeilnehmer(int id);
+        int ModifyTeilnehmer(Klassenmitglied &km, int id);
+        Klassenmitglied GetTeilnehmer(int id);
+        void GetTeilnehmer(int, Klassenmitglied*);
         Klassenmitglied* GetTeilnehmer(std::string eMail);
-        bool ContainsTeilnehmer(Klassenmitglied km);
+        bool ContainsTeilnehmer(Klassenmitglied &km);
         int SetPath(std::string path);
+        bool loadTeilnehmerListe();
 
-        bool Login(std::string eMail, std::string kennwort);
+        std::list<Klassenmitglied> teilnehmerListe;
+
 
     private:
         static TeilnehmerListe* uniqueInstance;
         TeilnehmerListe(){}
-        std::list<Klassenmitglied> teilnehmerListe;
+        //static std::list<Klassenmitglied> teilnehmerListe;
         QtTeilnehmerDao tDAO;
 };
 

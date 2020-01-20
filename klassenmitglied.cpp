@@ -1,4 +1,17 @@
 #include "klassenmitglied.h"
+#include "teilnehmerliste.h"
+
+
+Klassenmitglied::Klassenmitglied(string vorname, string nachname, string geburtsname, string eMail, string kennwort, string telNr, Adresse adresse):adresse(adresse)
+{
+    this->vorname = vorname;
+    this->nachname = nachname;
+    this->geburtsname = geburtsname;
+    this->eMail = eMail;
+    this->kennwort = kennwort;
+    this->telNr = telNr;
+    this->adresse = adresse;
+}
 
 
 Klassenmitglied::Klassenmitglied(int id, string vorname, string nachname, string geburtsname, string eMail, string kennwort, string telNr, Adresse adresse):adresse(adresse)
@@ -14,26 +27,27 @@ Klassenmitglied::Klassenmitglied(int id, string vorname, string nachname, string
 }
 
 
-Klassenmitglied::Klassenmitglied(string vorname, string nachname, string geburtsname, string eMail, string kennwort, string telNr, Adresse adresse):adresse(adresse)
+Aenderung* Klassenmitglied::aendern(Klassenmitglied* km, int orgaActorId, Datum dat)
 {
-    this->id = id;
-    this->vorname = vorname;
-    this->nachname = nachname;
-    this->geburtsname = geburtsname;
-    this->eMail = eMail;
-    this->kennwort = kennwort;
-    this->telNr = telNr;
-    this->adresse = adresse;
+    Aenderung* ptrReturn = nullptr;
+
+    Aenderung neueAenderung = Aenderung(orgaActorId, km, dat);
+    ptrReturn = &neueAenderung;
+
+    // aenderung zu aenderungsListe des km objekts in der TeilnehmerListe hinzufügen
+    TeilnehmerListe::Instance()->GetTeilnehmer(km->getId()).GetAenderungListe()->push_back(neueAenderung);
+
+    return ptrReturn;
 }
 
-
-bool Klassenmitglied::aendern(Klassenmitglied*, Organisator*, Datum)
+bool Klassenmitglied::aendern(int id, Klassenmitglied* km, int orga, Datum datum)
 {
-    bool returnValue = false;
+    Aenderung a(id, orga, km, datum);
 
-    //BODY
+    // aenderung zu aenderungsListe des km objekts in der TeilnehmerListe hinzufügen
+    TeilnehmerListe::Instance()->GetTeilnehmer(km->getId()).GetAenderungListe()->push_back(a);
 
-    return returnValue;
+    return true;
 }
 
 

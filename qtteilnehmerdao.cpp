@@ -4,6 +4,7 @@
 
 
 QSqlDatabase database;
+//Klassenmitglied _tmpKm = Klassenmitglied();
 
 using namespace std;
 
@@ -132,10 +133,10 @@ int QtTeilnehmerDao::Insert(Klassenmitglied km, int orga_id) {
     }
     else
     {
-        return 1;
+        return -1;
     }
 
-    return 1;
+    return -1;
 }
 
 
@@ -143,7 +144,7 @@ int QtTeilnehmerDao::Modify(Aenderung aenderung) {
     QSqlQuery query(database);
 
     query.prepare("INSERT INTO Aenderung ("
-    "id, "
+    //"id, "
     "tag, "
     "monat, "
     "jahr, "
@@ -162,7 +163,7 @@ int QtTeilnehmerDao::Modify(Aenderung aenderung) {
     "erfasst, "
     "taetigt) "
     "VALUES ("
-    ":id, "
+    //":id, "
     ":tag, "
     ":monat, "
     ":jahr, "
@@ -204,41 +205,202 @@ int QtTeilnehmerDao::Modify(Aenderung aenderung) {
             }
             else
             {
-                qDebug() << "Fehler: Kein gültiger Typ!";
+                return -1;
             }
         }
     }
     query.bindValue(":kennwort", QString::fromStdString(aenderung.getKlassenmitglied()->getKennwort()));
     query.bindValue(":strasse", QString::fromStdString(aenderung.getKlassenmitglied()->getStrasse()));
-    query.bindValue(":hausnummer", QString::fromStdString(aenderung.getKlassenmitglied()->getHausnummer()));
+    query.bindValue(":hausnr", QString::fromStdString(aenderung.getKlassenmitglied()->getHausnummer()));
     query.bindValue(":ort", QString::fromStdString(aenderung.getKlassenmitglied()->getOrt()));
     query.bindValue(":plz", QString::fromStdString(aenderung.getKlassenmitglied()->getPlz()));
     query.bindValue(":land", QString::fromStdString(aenderung.getKlassenmitglied()->getLand()));
+    query.bindValue(":erfasst", aenderung.getKlassenmitglied()->getId());
+    query.bindValue(":taetigt", aenderung.getOrgaId());
 
+    int aenderungsId;
     if(query.exec())
     {
-        return 0;
+        aenderungsId = query.lastInsertId().toInt();
     }
     else
     {
-        return 1;
+        return -1;
     }
+
+    query.clear();
+    Klassenmitglied tmp_km = Get(aenderung.getKlassenmitglied()->getId());
+
+    // UPDATE kunden SET name = 'Donald Duck', adresse = 'Entenhausen' WHERE name = 'Emil Entenich'
+    if(!tmp_km.getVorname().compare(aenderung.getKlassenmitglied()->getVorname()))
+    {
+        query.prepare("UPDATE Klassenmitglied SET vorname=:vorname WHERE id=:id");
+        query.bindValue(":vorname", QString::fromStdString(aenderung.getKlassenmitglied()->getVorname()));
+        query.bindValue(":id", aenderung.getKlassenmitglied()->getId());
+        if(!query.exec())
+        {
+            return -1;
+        }
+    }
+    query.clear();
+    if(!tmp_km.getNachname().compare(aenderung.getKlassenmitglied()->getNachname()))
+    {
+        query.prepare("UPDATE Klassenmitglied SET nachname=:nachname WHERE id=:id");
+        query.bindValue(":nachname", QString::fromStdString(aenderung.getKlassenmitglied()->getNachname()));
+        query.bindValue(":id", aenderung.getKlassenmitglied()->getId());
+        if(!query.exec())
+        {
+            return -1;
+        }
+    }
+    query.clear();
+    if(!tmp_km.getGeburtsname().compare(aenderung.getKlassenmitglied()->getGeburtsname()))
+    {
+        query.prepare("UPDATE Klassenmitglied SET geburtsname=:geburtsname WHERE id=:id");
+        query.bindValue(":geburtsname", QString::fromStdString(aenderung.getKlassenmitglied()->getGeburtsname()));
+        query.bindValue(":id", aenderung.getKlassenmitglied()->getId());
+        if(!query.exec())
+        {
+            return -1;
+        }
+    }
+    query.clear();
+    if(!tmp_km.getTelnr().compare(aenderung.getKlassenmitglied()->getTelnr()))
+    {
+        query.prepare("UPDATE Klassenmitglied SET teln=:teln WHERE id=:id");
+        query.bindValue(":teln", QString::fromStdString(aenderung.getKlassenmitglied()->getTelnr()));
+        query.bindValue(":id", aenderung.getKlassenmitglied()->getId());
+        if(!query.exec())
+        {
+            return -1;
+        }
+    }
+    query.clear();
+    if(!tmp_km.getKennwort().compare(aenderung.getKlassenmitglied()->getKennwort()))
+    {
+        query.prepare("UPDATE Klassenmitglied SET kennwort=:teln WHERE id=:id");
+        query.bindValue(":teln", QString::fromStdString(aenderung.getKlassenmitglied()->getKennwort()));
+        query.bindValue(":id", aenderung.getKlassenmitglied()->getId());
+        if(!query.exec())
+        {
+            return -1;
+        }
+    }
+    query.clear();
+    if(!tmp_km.getStrasse().compare(aenderung.getKlassenmitglied()->getStrasse()))
+    {
+        query.prepare("UPDATE Klassenmitglied SET strasse=:teln WHERE id=:id");
+        query.bindValue(":teln", QString::fromStdString(aenderung.getKlassenmitglied()->getStrasse()));
+        query.bindValue(":id", aenderung.getKlassenmitglied()->getId());
+        if(!query.exec())
+        {
+            return -1;
+        }
+    }
+    query.clear();
+    if(!tmp_km.getHausnummer().compare(aenderung.getKlassenmitglied()->getHausnummer()))
+    {
+        query.prepare("UPDATE Klassenmitglied SET hausnr=:teln WHERE id=:id");
+        query.bindValue(":teln", QString::fromStdString(aenderung.getKlassenmitglied()->getHausnummer()));
+        query.bindValue(":id", aenderung.getKlassenmitglied()->getId());
+        if(!query.exec())
+        {
+            return -1;
+        }
+    }
+    query.clear();
+    if(!tmp_km.getOrt().compare(aenderung.getKlassenmitglied()->getOrt()))
+    {
+        query.prepare("UPDATE Klassenmitglied SET ort=:teln WHERE id=:id");
+        query.bindValue(":teln", QString::fromStdString(aenderung.getKlassenmitglied()->getOrt()));
+        query.bindValue(":id", aenderung.getKlassenmitglied()->getId());
+        if(!query.exec())
+        {
+            return -1;
+        }
+    }
+    query.clear();
+    if(!tmp_km.getPlz().compare(aenderung.getKlassenmitglied()->getPlz()))
+    {
+        query.prepare("UPDATE Klassenmitglied SET plz=:teln WHERE id=:id");
+        query.bindValue(":teln", QString::fromStdString(aenderung.getKlassenmitglied()->getPlz()));
+        query.bindValue(":id", aenderung.getKlassenmitglied()->getId());
+        if(!query.exec())
+        {
+            return -1;
+        }
+    }
+    query.clear();
+    if(!tmp_km.getLand().compare(aenderung.getKlassenmitglied()->getLand()))
+    {
+        query.prepare("UPDATE Klassenmitglied SET land=:teln WHERE id=:id");
+        query.bindValue(":teln", QString::fromStdString(aenderung.getKlassenmitglied()->getLand()));
+        query.bindValue(":id", aenderung.getKlassenmitglied()->getId());
+        if(!query.exec())
+        {
+            return -1;
+        }
+    }
+    query.clear();
+    if(typeid(aenderung.getKlassenmitglied()).name() == typeid(Klassenmitglied).name())
+    {
+        query.prepare("UPDATE Klassenmitglied SET typ=:teln WHERE id=:id");
+        query.bindValue(":teln", 1);
+        query.bindValue(":id", aenderung.getKlassenmitglied()->getId());
+        if(!query.exec())
+        {
+            return -1;
+        }
+    }
+    else
+    {
+        if(typeid(aenderung.getKlassenmitglied()).name() == typeid(Organisator).name())
+        {
+            query.prepare("UPDATE Klassenmitglied SET typ=:teln WHERE id=:id");
+            query.bindValue(":teln", 2);
+            query.bindValue(":id", aenderung.getKlassenmitglied()->getId());
+            if(!query.exec())
+            {
+                return -1;
+            }
+        }
+        else
+        {
+            if(typeid(aenderung.getKlassenmitglied()).name() == typeid(Hauptorganisator).name())
+            {
+                query.prepare("UPDATE Klassenmitglied SET typ=:teln WHERE id=:id");
+                query.bindValue(":teln", 3);
+                query.bindValue(":id", aenderung.getKlassenmitglied()->getId());
+                if(!query.exec())
+                {
+                    return -1;
+                }
+            }
+            else
+            {
+                return -1;
+            }
+        }
+    }
+
+    return -1;
 }
 
 
-bool QtTeilnehmerDao::Get(int id, Klassenmitglied &km) {
+Klassenmitglied QtTeilnehmerDao::Get(int id) {
     QSqlQuery query(database);
 
-    query.prepare("SELECT * FROM Klassenmitglied WHERE id==\":id\";");
-    query.bindValue(":id", QString::fromStdString(to_string(id)));
+    query.prepare("SELECT * FROM Klassenmitglied WHERE id==:id;");
+    query.bindValue(":id", id);
 
     if(query.exec())
     {
+        qDebug() << "In exec!";
         // query.value(0).toString();
 
         if (query.next())
         {
-            int id = query.value(0).toInt();
+            id = query.value(0).toInt();
             string vorname = query.value(1).toString().toStdString();
             string nachname = query.value(2).toString().toStdString();
             string geburtsname = query.value(3).toString().toStdString();
@@ -252,27 +414,71 @@ bool QtTeilnehmerDao::Get(int id, Klassenmitglied &km) {
             string plz = query.value(11).toString().toStdString();
             string land = query.value(12).toString().toStdString();
 
-            Klassenmitglied _km(vorname,
-                               nachname,
-                               geburtsname,
-                               email,
-                               kennwort,
-                               telnr,
-                               Adresse(strasse,
-                                       hausnr,
-                                       ort,
-                                       plz,
-                                       land));
-            km = _km;
-            return true;
+            Klassenmitglied _tmpKm = Klassenmitglied();
+            if(typ == 1)
+            {
+                _tmpKm = Klassenmitglied(id,
+                                   vorname,
+                                   nachname,
+                                   geburtsname,
+                                   email,
+                                   kennwort,
+                                   telnr,
+                                   Adresse(strasse,
+                                           hausnr,
+                                           ort,
+                                           plz,
+                                           land));
+            }
+            else
+            {
+                if(typ == 2)
+                {
+                    _tmpKm = Organisator(id,
+                                       vorname,
+                                       nachname,
+                                       geburtsname,
+                                       email,
+                                       kennwort,
+                                       telnr,
+                                       Adresse(strasse,
+                                               hausnr,
+                                               ort,
+                                               plz,
+                                               land));
+                }
+                else
+                {
+                    if(typ == 3)
+                    {
+                        _tmpKm = Hauptorganisator(id,
+                                           vorname,
+                                           nachname,
+                                           geburtsname,
+                                           email,
+                                           kennwort,
+                                           telnr,
+                                           Adresse(strasse,
+                                                   hausnr,
+                                                   ort,
+                                                   plz,
+                                                   land));
+                    }
+                }
+            }
+
+
+            qDebug() << "Debug ID (GET)";
+            qDebug() << _tmpKm.getId();
+            return _tmpKm;
         }
     }
     else
     {
-        return false;
+        //return nullptr;
     }
 
-    return false;
+    //return nullptr;
 }
 
 
@@ -282,7 +488,7 @@ bool QtTeilnehmerDao::Contains(Klassenmitglied km) {
 
     QSqlQuery query(database);
 
-    query.prepare("SELECT EXISTS(SELECT 1 FROM Klassenmitglied WHERE id=\":id\" LIMIT 1);");
+    query.prepare("SELECT EXISTS(SELECT 1 FROM Klassenmitglied WHERE id=:id LIMIT 1);");
     query.bindValue(":id", QString::fromStdString(to_string(km.getId())));
 
     if(query.exec())
@@ -300,8 +506,9 @@ bool QtTeilnehmerDao::Contains(Klassenmitglied km) {
 }
 
 
-bool QtTeilnehmerDao::GetTeilnehmerListe(list<Klassenmitglied> lkm) {
+bool QtTeilnehmerDao::GetTeilnehmerListe(list<Klassenmitglied>* lkm) {
     QSqlQuery query(database);
+    QSqlQuery query_inner(database);
 
     query.prepare("SELECT * FROM Klassenmitglied;");
 
@@ -323,10 +530,14 @@ bool QtTeilnehmerDao::GetTeilnehmerListe(list<Klassenmitglied> lkm) {
             string plz = query.value(11).toString().toStdString();
             string land = query.value(12).toString().toStdString();
 
+            qDebug() << "KM:";
+            qDebug() << id;
+
             Klassenmitglied *_km = nullptr;
             if(typ == 1)
             {
-                Klassenmitglied _km(vorname,
+                _km = new Klassenmitglied(id,
+                                   vorname,
                                    nachname,
                                    geburtsname,
                                    email,
@@ -342,7 +553,8 @@ bool QtTeilnehmerDao::GetTeilnehmerListe(list<Klassenmitglied> lkm) {
             {
                 if(typ == 2)
                 {
-                    Organisator _km(vorname,
+                    _km = new Organisator(id,
+                                       vorname,
                                        nachname,
                                        geburtsname,
                                        email,
@@ -356,7 +568,8 @@ bool QtTeilnehmerDao::GetTeilnehmerListe(list<Klassenmitglied> lkm) {
                 }
                 else
                 {
-                    Hauptorganisator _km(vorname,
+                    _km = new Hauptorganisator(id,
+                                       vorname,
                                        nachname,
                                        geburtsname,
                                        email,
@@ -370,7 +583,89 @@ bool QtTeilnehmerDao::GetTeilnehmerListe(list<Klassenmitglied> lkm) {
                 }
             }
 
-            lkm.insert(lkm.end(), *_km);
+            // TODO: Änderungen!
+            // aendern(Klassenmitglied* km, int orga_id, Datum datum)
+            query_inner.prepare("SELECT * FROM Aenderung WHERE erfasst=:kmid ORDER BY id ASC");
+            query_inner.bindValue(":kmid", _km->getId());
+
+            while (query_inner.next())
+            {
+                int id = query_inner.value(0).toInt();
+                int tag = query_inner.value(1).toInt();
+                int monat = query_inner.value(2).toInt();
+                int jahr = query_inner.value(3).toInt();
+                string vorname = query_inner.value(4).toString().toStdString();
+                string nachname = query_inner.value(5).toString().toStdString();
+                string geburtsname = query_inner.value(6).toString().toStdString();
+                string email = query_inner.value(7).toString().toStdString();
+                string telnr = query_inner.value(8).toString().toStdString();
+                int typ = query_inner.value(9).toInt();
+                string kennwort = query_inner.value(10).toString().toStdString();
+                string strasse = query_inner.value(11).toString().toStdString();
+                string hausnr = query_inner.value(12).toString().toStdString();
+                string ort = query_inner.value(13).toString().toStdString();
+                string plz = query_inner.value(14).toString().toStdString();
+                string land = query_inner.value(15).toString().toStdString();
+                int k_id = query_inner.value(16).toInt();
+                int orga_id = query_inner.value(17).toInt();
+
+                Klassenmitglied *_km1 = nullptr;
+                if(typ == 1)
+                {
+                    _km1 = new Klassenmitglied(k_id,
+                                       vorname,
+                                       nachname,
+                                       geburtsname,
+                                       email,
+                                       kennwort,
+                                       telnr,
+                                       Adresse(strasse,
+                                               hausnr,
+                                               ort,
+                                               plz,
+                                               land));
+                }
+                else
+                {
+                    if(typ == 2)
+                    {
+                        _km1 = new Organisator(k_id,
+                                           vorname,
+                                           nachname,
+                                           geburtsname,
+                                           email,
+                                           kennwort,
+                                           telnr,
+                                           Adresse(strasse,
+                                                   hausnr,
+                                                   ort,
+                                                   plz,
+                                                   land));
+                    }
+                    else
+                    {
+                        _km1 = new Hauptorganisator(k_id,
+                                           vorname,
+                                           nachname,
+                                           geburtsname,
+                                           email,
+                                           kennwort,
+                                           telnr,
+                                           Adresse(strasse,
+                                                   hausnr,
+                                                   ort,
+                                                   plz,
+                                                   land));
+                    }
+                } // END TYP-if
+
+                Datum dt(tag, monat, jahr);
+                _km->aendern(id, _km1, orga_id, dt);
+
+            } // END INNER-WHILE
+
+            lkm->push_back(*_km);
+            //lkm.insert(lkm.end(), *_km);
         }
         return true;
     }
