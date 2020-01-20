@@ -107,6 +107,24 @@ bool TeilnehmerListe::ContainsTeilnehmer(Organisator* orga)
 }
 
 
+// überprüft ob Klassenmitglied km in der TeilnehmerListe enthalten ist (anhand seiner unique eMail)
+bool TeilnehmerListe::ContainsTeilnehmer(string eMail)
+{
+    bool returnValue = false;
+
+    for(auto x : teilnehmerListe)
+    {
+        if ( x.getEmail() == eMail )
+        {
+            returnValue = true;
+            break;
+        }
+    }
+
+    return returnValue;
+}
+
+
 // was soll diese Funktion tun?
 int TeilnehmerListe::SetPath(string path)
 {

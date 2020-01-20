@@ -22,6 +22,7 @@ class TeilnehmerListe
 
         bool ContainsTeilnehmer(Klassenmitglied* km);
         bool ContainsTeilnehmer(Organisator* orga);
+        bool ContainsTeilnehmer(string eMail);
 
         Klassenmitglied* GetTeilnehmer(int teilnehmerId);
         Klassenmitglied* GetTeilnehmer(std::string eMail);
