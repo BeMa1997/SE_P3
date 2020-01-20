@@ -35,17 +35,18 @@ bool Organisator::KlassenmitgliedBearbeiten(Klassenmitglied* km)
     bool returnValue = false;
 
     // check pre-condition
-    if ( TeilnehmerListe::Instance()->ContainsTeilnehmer(*km) )
+    if ( TeilnehmerListe::Instance()->ContainsTeilnehmer(km) )
     {
         // overwrite all attributes but the id
-        TeilnehmerListe::Instance()->ModifyTeilnehmer(*km);
+        TeilnehmerListe::Instance()->ModifyTeilnehmer(km, this->getId());
     }
 
-    // check post-condition
-    Klassenmitglied* databaseObj = TeilnehmerListe::Instance()->GetTeilnehmer(km->getId());
-    if ( databaseObj ==  km)
-    {
-        returnValue = true;
+        // check post-condition
+        Klassenmitglied* databaseObj = TeilnehmerListe::Instance()->GetTeilnehmer(km->getId());
+        if ( databaseObj ==  km)
+        {
+            returnValue = true;
+        }
     }
 
     return returnValue;
