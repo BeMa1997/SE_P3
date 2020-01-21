@@ -35,7 +35,7 @@ bool TeilnehmerListe::loadTeilnehmerListe()
 }
 
 
-int TeilnehmerListe::ModifyTeilnehmer(Klassenmitglied km, int id)
+int TeilnehmerListe::ModifyTeilnehmer(Klassenmitglied* km, int orgaId)
 {
     int retVal = 1;
     Klassenmitglied* left = km;
@@ -127,7 +127,7 @@ Klassenmitglied* TeilnehmerListe::GetTeilnehmer(string eMail)
 }
 
 
-bool TeilnehmerListe::ContainsTeilnehmer(Klassenmitglied km)
+bool TeilnehmerListe::ContainsTeilnehmer(Klassenmitglied* km)
 {
     bool returnValue = false;
 
@@ -178,16 +178,6 @@ bool TeilnehmerListe::ContainsTeilnehmer(string eMail)
 
     return returnValue;
 }
-
-
-// was soll diese Funktion tun?
-int TeilnehmerListe::SetPath(string path)
-{
-    //
-
-    return 0;
-}
-
 
 
 // loggt einen user lokal ein

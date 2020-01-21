@@ -17,7 +17,6 @@ class Klassenmitglied
         // das objekt in teilnehmerliste erhält diese erhalten sie erst später nach dem eintragen in die Datenbank
         Klassenmitglied(string vorname, string nachname, string geburtsname, string eMail, string kennwort, string telNr, Adresse adresse);
         Klassenmitglied(int id, string vorname, string nachname, string geburtsname, string eMail, string kennwort, string telNr, Adresse adresse);
-        Klassenmitglied(string vorname, string nachname, string geburtsname, string eMail, string kennwort, string telNr, Adresse adresse);
         Klassenmitglied(Organisator*);
         Klassenmitglied(){}
 
@@ -40,7 +39,7 @@ class Klassenmitglied
         string getOrt(){return adresse.getOrt();}
         string getStrasse(){return adresse.getStrasse();}
         string getHausnummer(){return adresse.getHausnummer();}
-        list<Aenderung>* GetAenderungListe(){return &aenderung;}
+        //list<Aenderung>* GetAenderungListe(){return &aenderung;}
 
         //setter
         void setId(int id){this->id = id;}

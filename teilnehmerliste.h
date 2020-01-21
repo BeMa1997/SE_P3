@@ -25,10 +25,9 @@ class TeilnehmerListe
         bool ContainsTeilnehmer(Organisator* orga);
         bool ContainsTeilnehmer(string eMail);
 
-        Klassenmitglied* GetTeilnehmer(int teilnehmerId);
+        Klassenmitglied GetTeilnehmer(int teilnehmerId);
         Klassenmitglied* GetTeilnehmer(std::string eMail);
 
-        int SetPath(std::string path);
         bool loadTeilnehmerListe();
 
         // Session-Management

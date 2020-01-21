@@ -13,7 +13,7 @@ Organisator::Organisator(Klassenmitglied* km) : Klassenmitglied(km->getId(), km-
 {
     list<Aenderung> _aenderungsListe = km->GetAenderungListe();
     for (auto it : _aenderungsListe) {
-        aendern(it.getKlassenmitglied(), it.getOrganisator()->getId(), *it.getDatum());
+        aendern(it.getKlassenmitglied(), it.getOrgaId(), *it.getDatum());
         this->GetAenderungListe().back().setId(it.getId());
     }
 }
@@ -24,13 +24,13 @@ bool Organisator::KlassenmitgliedAnlegen(Klassenmitglied* km)
     bool returnValue = false;
 
     // check pre-condition
-    if ( ! TeilnehmerListe::Instance()->ContainsTeilnehmer(*km) )
+    if ( ! TeilnehmerListe::Instance()->ContainsTeilnehmer(km) )
     {
         //TeilnehmerListe::Instance()->InsertTeilnehmer(*km);
     }
 
     // check post-condition
-    if ( TeilnehmerListe::Instance()->ContainsTeilnehmer(*km) )
+    if ( TeilnehmerListe::Instance()->ContainsTeilnehmer(km) )
     {
         returnValue = true;
     }
@@ -45,7 +45,7 @@ bool Organisator::KlassenmitgliedBearbeiten(Klassenmitglied* km)
     bool returnValue = false;
 
     // check pre-condition
-    if ( TeilnehmerListe::Instance()->ContainsTeilnehmer(*km) )
+    if ( TeilnehmerListe::Instance()->ContainsTeilnehmer(km) )
     {
         // overwrite all attributes but the id
         //TeilnehmerListe::Instance()->ModifyTeilnehmer(*km);
