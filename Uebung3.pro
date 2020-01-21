@@ -36,6 +36,7 @@ SOURCES += \
         organisator.cpp \
         qtteilnehmerdao.cpp \
         teilnehmerliste.cpp \
+        passwortaendernview.cpp \
 
 HEADERS += \
     loginview.h \
@@ -47,6 +48,8 @@ HEADERS += \
     organisator.h \
     qtteilnehmerdao.h \
     teilnehmerliste.h \
+    passwortaendernview.h \
 
 FORMS += \
-    loginview.ui
+    loginview.ui \
+    passwortaendernview.ui \
