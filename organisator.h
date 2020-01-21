@@ -16,7 +16,6 @@ class Organisator : public Klassenmitglied
         bool KlassenmitgliedAnlegen(Klassenmitglied* km);
         bool KlassenmitgliedBearbeiten(Klassenmitglied* km);
 
-        bool Login(std::string eMail, std::string password);
         bool Logout();
         bool PasswortAendern(std::string alt, std::string neu);
 

@@ -39,7 +39,6 @@ bool Organisator::KlassenmitgliedAnlegen(Klassenmitglied* km)
 }
 
 
-
 bool Organisator::KlassenmitgliedBearbeiten(Klassenmitglied* km)
 {
     bool returnValue = false;
@@ -52,21 +51,11 @@ bool Organisator::KlassenmitgliedBearbeiten(Klassenmitglied* km)
     }
 
     // check post-condition
-    Klassenmitglied databaseObj = TeilnehmerListe::Instance()->GetTeilnehmer(km->getId());
-    if ( &databaseObj ==  km)
+    Klassenmitglied* databaseObj = TeilnehmerListe::Instance()->GetTeilnehmer(km->getId());
+    if ( databaseObj ==  km)
     {
         returnValue = true;
     }
-
-    return returnValue;
-}
-
-
-bool Organisator::Login(string eMail, string password)
-{
-    bool returnValue = false;
-
-    //
 
     return returnValue;
 }

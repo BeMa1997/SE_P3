@@ -63,18 +63,10 @@ bool Klassenmitglied::operator ==(const Klassenmitglied& d)
        telNr == d.telNr &&
        adresse == d.adresse)
     {
-            returnValue = true;
+       returnValue = true;
     }
-
-    // aenderung zu aenderungsListe des km objekts in der TeilnehmerListe hinzufügen
-    TeilnehmerListe::Instance()->GetTeilnehmer(km->getId()).GetAenderungListe()->push_back(neueAenderung);
-
-    return ptrReturn;
 }
 
-bool Klassenmitglied::aendern(int id, Klassenmitglied* km, int orga, Datum datum)
-{
-    Aenderung a(id, orga, km, datum);
 
 bool Klassenmitglied::operator !=(const Klassenmitglied& d)
 {

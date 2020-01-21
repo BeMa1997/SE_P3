@@ -29,6 +29,7 @@ int TeilnehmerListe::InsertTeilnehmer(Klassenmitglied* km, int orgaId)
     return ret;
 }
 
+
 bool TeilnehmerListe::loadTeilnehmerListe()
 {
     tDAO.GetTeilnehmerListe(&teilnehmerListe);
@@ -101,12 +102,6 @@ Klassenmitglied* TeilnehmerListe::GetTeilnehmer(int orgaId)
     }
 
     return kmOut;
-}
-
-
-Klassenmitglied TeilnehmerListe::GetTeilnehmer(int id)
-{
-    return tDAO.Get(id);
 }
 
 
