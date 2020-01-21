@@ -231,7 +231,6 @@ int QtTeilnehmerDao::Modify(Aenderung aenderung) {
     query.clear();
     Klassenmitglied tmp_km = Get(aenderung.getKlassenmitglied()->getId());
 
-    // UPDATE kunden SET name = 'Donald Duck', adresse = 'Entenhausen' WHERE name = 'Emil Entenich'
     if(!tmp_km.getVorname().compare(aenderung.getKlassenmitglied()->getVorname()))
     {
         query.prepare("UPDATE Klassenmitglied SET vorname=:vorname WHERE id=:id");
