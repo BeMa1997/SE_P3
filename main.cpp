@@ -1,16 +1,16 @@
+#include <QApplication>
 #include "TeilnehmerListeView.h"
 #include <QtSql>
-#include <QApplication>
 #include "teilnehmerliste.h"
 #include "loginview.h"
 #include "passwortaendernview.h"
 
 int main(int argc, char *argv[])
 {
-    QCoreApplication a(argc, argv);
+    QApplication app(argc, argv);
 
     MainWindow mw;
     mw.show();
 
-    return a.exec();
+    return app.exec();
 }

@@ -1,3 +1,4 @@
+#include <QApplication>
 #include "TeilnehmerListeView.h"
 #include "ui_mainwindow.h"
 
@@ -15,10 +16,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     //Set up tableWidget
-    ui->table_mitglieder->setColumnCount(2);
-    ui->table_mitglieder->setHorizontalHeaderLabels(QStringList() << "Vorname" << "Nachname");
-    ui->table_mitglieder->verticalHeader()->hide();
-    ui->table_mitglieder->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+//    ui->table_mitglieder->setColumnCount(2);
+//    ui->table_mitglieder->setHorizontalHeaderLabels(QStringList() << "Vorname" << "Nachname");
+//    ui->table_mitglieder->verticalHeader()->hide();
+//    ui->table_mitglieder->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
 
       // Tabelle mit den Person in der Liste füllen
       //int n = persons.size();
