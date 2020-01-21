@@ -50,6 +50,17 @@ Aenderung* Klassenmitglied::aendern(Klassenmitglied* km, int orgaActorId, Datum 
     return ptrReturn;
 }
 
+//  _km->aendern(id, _km1, orga_id, dt);
+bool Klassenmitglied::aendern(int id, Klassenmitglied* km, int orgaId, Datum datum)
+{
+    Aenderung neueAenderung = Aenderung(id, orgaId, km, datum);
+
+    // aenderung zu aenderungsListe des km objekts in der TeilnehmerListe hinzufügen
+    TeilnehmerListe::Instance()->GetTeilnehmer(km->getId())->GetAenderungListe().push_back(neueAenderung);
+
+    return true;
+}
+
 
 bool Klassenmitglied::operator ==(const Klassenmitglied& d)
 {
