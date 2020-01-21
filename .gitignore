@@ -51,3 +51,8 @@ compile_commands.json
 
 # Other IDEs
 .idea
+
+# Debug Build Release
+Debug/
+Build/
+Release/
