@@ -31,7 +31,7 @@ Klassenmitglied::Klassenmitglied(Organisator* km) : Klassenmitglied(km->getId(),
 {
     list<Aenderung> _aenderungsListe = km->GetAenderungListe();
     for (auto it : _aenderungsListe) {
-        aendern(it.getKlassenmitglied(), it.getOrganisator()->getId(), *it.getDatum());
+        aendern(it.getKlassenmitglied(), it.getOrgaId(), *it.getDatum());
         this->GetAenderungListe().back().setId(it.getId());
     }
 }
