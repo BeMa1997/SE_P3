@@ -26,6 +26,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
+        loginview.cpp \
         adresse.cpp \
         aenderung.cpp \
         datum.cpp \
@@ -37,6 +38,7 @@ SOURCES += \
         teilnehmerliste.cpp \
 
 HEADERS += \
+    loginview.h \
     adresse.h \
     aenderung.h \
     datum.h \
@@ -46,4 +48,5 @@ HEADERS += \
     qtteilnehmerdao.h \
     teilnehmerliste.h \
 
-FORMS +=
+FORMS += \
+    loginview.ui
