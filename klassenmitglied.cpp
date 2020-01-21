@@ -1,5 +1,6 @@
 #include "klassenmitglied.h"
 #include "teilnehmerliste.h"
+#include "organisator.h"
 
 
 Klassenmitglied::Klassenmitglied(string vorname, string nachname, string geburtsname, string eMail, string kennwort, string telNr, Adresse adresse):adresse(adresse)
@@ -16,7 +17,6 @@ Klassenmitglied::Klassenmitglied(string vorname, string nachname, string geburts
 
 Klassenmitglied::Klassenmitglied(int id, string vorname, string nachname, string geburtsname, string eMail, string kennwort, string telNr, Adresse adresse):adresse(adresse)
 {
-    this->id = id;
     this->vorname = vorname;
     this->nachname = nachname;
     this->geburtsname = geburtsname;
@@ -24,6 +24,16 @@ Klassenmitglied::Klassenmitglied(int id, string vorname, string nachname, string
     this->kennwort = kennwort;
     this->telNr = telNr;
     this->adresse = adresse;
+}
+
+
+Klassenmitglied::Klassenmitglied(Organisator* km) : Klassenmitglied(km->getId(), km->getVorname(), km->getNachname(), km->getGeburtsname(), km->getEmail(), km->getKennwort(), km->getTelnr(), km->getAdresse())
+{
+    list<Aenderung> _aenderungsListe = km->GetAenderungListe();
+    for (auto it : _aenderungsListe) {
+        aendern(it.getKlassenmitglied(), it.getOrganisator()->getId(), *it.getDatum());
+        this->GetAenderungListe().back().setId(it.getId());
+    }
 }
 
 
@@ -35,6 +45,28 @@ Aenderung* Klassenmitglied::aendern(Klassenmitglied* km, int orgaActorId, Datum 
     ptrReturn = &neueAenderung;
 
     // aenderung zu aenderungsListe des km objekts in der TeilnehmerListe hinzufügen
+    TeilnehmerListe::Instance()->GetTeilnehmer(km->getId())->GetAenderungListe().push_back(neueAenderung);
+
+    return ptrReturn;
+}
+
+
+bool Klassenmitglied::operator ==(const Klassenmitglied& d)
+{
+    bool returnValue = false;
+
+    if(vorname == d.vorname &&
+       nachname == d.nachname &&
+       geburtsname == d.geburtsname &&
+       eMail == d.eMail &&
+       kennwort == d.kennwort &&
+       telNr == d.telNr &&
+       adresse == d.adresse)
+    {
+            returnValue = true;
+    }
+
+    // aenderung zu aenderungsListe des km objekts in der TeilnehmerListe hinzufügen
     TeilnehmerListe::Instance()->GetTeilnehmer(km->getId()).GetAenderungListe()->push_back(neueAenderung);
 
     return ptrReturn;
@@ -44,31 +76,20 @@ bool Klassenmitglied::aendern(int id, Klassenmitglied* km, int orga, Datum datum
 {
     Aenderung a(id, orga, km, datum);
 
-    // aenderung zu aenderungsListe des km objekts in der TeilnehmerListe hinzufügen
-    TeilnehmerListe::Instance()->GetTeilnehmer(km->getId()).GetAenderungListe()->push_back(a);
+bool Klassenmitglied::operator !=(const Klassenmitglied& d)
+{
+    bool returnValue = false;
 
-    return true;
+    if(vorname != d.vorname ||
+        nachname != d.nachname ||
+        geburtsname != d.geburtsname ||
+        eMail != d.eMail ||
+        kennwort != d.kennwort ||
+        telNr != d.telNr ||
+        adresse != d.adresse)
+    {
+        returnValue = true;
+    }
+
+    return returnValue;
 }
-
-
-//bool operator == (Klassenmitglied const &obj1, Klassenmitglied const &obj2)
-//{
-//    bool returnValue = false;
-
-//    Klassenmitglied km1, km2;
-//    km1 = obj1;
-//    km2 = obj2;
-
-//    if ( km1.eMail == km2.eMail &&
-//      km1.telNr == km2.telNr &&
-//      km1.adresse == km2.adresse &&
-//      km1.vorname == km2.vorname &&
-//      km1.kennwort == km2.kennwort &&
-//      km1.nachname == km2.nachname &&
-//      km1.geburtsname == km2.geburtsname )
-//    {
-//     returnValue = true;
-//    }
-
-//    return returnValue;
-//}

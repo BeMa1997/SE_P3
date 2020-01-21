@@ -2,9 +2,7 @@
 #include "hauptorganisator.h"
 #include <string>
 
-
 QSqlDatabase database;
-//Klassenmitglied _tmpKm = Klassenmitglied();
 
 using namespace std;
 
@@ -61,6 +59,7 @@ QtTeilnehmerDao::QtTeilnehmerDao() {
 }
 
 
+// gibt id des eingefügten Klassenmitglied zurück
 int QtTeilnehmerDao::Insert(Klassenmitglied km, int orga_id) {
     QSqlQuery query(database);
     query.prepare("INSERT INTO Klassenmitglied ("
@@ -140,6 +139,7 @@ int QtTeilnehmerDao::Insert(Klassenmitglied km, int orga_id) {
 }
 
 
+// gibt id der Aenderung zurück
 int QtTeilnehmerDao::Modify(Aenderung aenderung) {
     QSqlQuery query(database);
 

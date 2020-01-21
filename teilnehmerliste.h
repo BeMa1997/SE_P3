@@ -14,24 +14,36 @@ class TeilnehmerListe
     public:
         static TeilnehmerListe* Instance();
 
-        int InsertTeilnehmer(Klassenmitglied km, int id);
+        int InsertTeilnehmer(Klassenmitglied* km, int orgaId);
+        int InsertTeilnehmer(Organisator* orga, int orgaId);
 
-        int ModifyTeilnehmer(Klassenmitglied &km, int id);
-        Klassenmitglied GetTeilnehmer(int id);
-        void GetTeilnehmer(int, Klassenmitglied*);
+        int ModifyTeilnehmer(Klassenmitglied* km, int orgaId);
+        int ToKlassenmitglied(Organisator* orga, int orgaId);
+        int ToOrganisator(Klassenmitglied* km, int orgaId);
+
+        bool ContainsTeilnehmer(Klassenmitglied* km);
+        bool ContainsTeilnehmer(Organisator* orga);
+        bool ContainsTeilnehmer(string eMail);
+
+        Klassenmitglied* GetTeilnehmer(int teilnehmerId);
         Klassenmitglied* GetTeilnehmer(std::string eMail);
-        bool ContainsTeilnehmer(Klassenmitglied &km);
+
         int SetPath(std::string path);
         bool loadTeilnehmerListe();
 
-        std::list<Klassenmitglied> teilnehmerListe;
+        // Session-Management
+        bool Login(std::string eMail, std::string kennwort);
+        Klassenmitglied* getCurrentUser(){return currentUser;}
+        void setCurrentUser(Klassenmitglied* currentUser){this->currentUser = currentUser;}
 
 
     private:
         static TeilnehmerListe* uniqueInstance;
+        static Klassenmitglied* currentUser;
         TeilnehmerListe(){}
         //static std::list<Klassenmitglied> teilnehmerListe;
         QtTeilnehmerDao tDAO;
+
 };
 
 #endif // TEILNEHMERLISTE_H

@@ -9,12 +9,15 @@ class Organisator;
 class Aenderung
 {
     public:
-        Aenderung(int, int, Klassenmitglied*, Datum);
-        Aenderung(int, Klassenmitglied*, Datum);
-        int getId(){return id;}
+        Aenderung(int orgaId, Klassenmitglied* mitglied, Datum datum);
+
         Klassenmitglied* getKlassenmitglied(){return mitglied;}
         int getOrgaId(){return orga_id;}
         Datum* getDatum(){return &datum;}
+
+        int getId(){return id;}
+        void setId(int id){this->id = id;}
+
     private:
         int id;
         int orga_id;

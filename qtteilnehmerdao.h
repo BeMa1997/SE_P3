@@ -13,7 +13,8 @@ class QtTeilnehmerDao
     public:
         QtTeilnehmerDao();
 
-        int Insert(Klassenmitglied km, int orga_id);
+        //return id des eingefügten km
+        int Insert(Klassenmitglied km, int orgaId);
         int Modify(Aenderung aenderung);
         Klassenmitglied Get(int id);
         bool Contains(Klassenmitglied km);
