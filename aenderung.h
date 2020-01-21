@@ -10,6 +10,7 @@ class Aenderung
 {
     public:
         Aenderung(int orgaId, Klassenmitglied* mitglied, Datum datum);
+        Aenderung(int id, int orga, Klassenmitglied* mitglied, Datum datum);
 
         Klassenmitglied* getKlassenmitglied(){return mitglied;}
         int getOrgaId(){return orga_id;}

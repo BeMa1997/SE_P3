@@ -38,12 +38,11 @@ class TeilnehmerListe
 
 
     private:
+        TeilnehmerListe(){}
         static TeilnehmerListe* uniqueInstance;
         static Klassenmitglied* currentUser;
-        TeilnehmerListe(){}
-        //static std::list<Klassenmitglied> teilnehmerListe;
+        static std::list<Klassenmitglied> teilneherListe;
         QtTeilnehmerDao tDAO;
-
 };
 
 #endif // TEILNEHMERLISTE_H
