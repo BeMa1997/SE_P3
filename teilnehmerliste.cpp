@@ -24,7 +24,7 @@ int TeilnehmerListe::InsertTeilnehmer(Klassenmitglied* km, int orgaId)
     int ret = tDAO.Insert(*km, orgaId);
 
     // ID in das Objekt in TeilnehmerListe hinzufügen
-    TeilnehmerListe::Instance()->GetTeilnehmer(km->getId())->setId(ret);
+    TeilnehmerListe::Instance()->GetTeilnehmer(km->getId()).setId(ret);
 
     return ret;
 }
@@ -40,42 +40,42 @@ int TeilnehmerListe::ModifyTeilnehmer(Klassenmitglied* km, int orgaId)
 {
     int retVal = 1;
     Klassenmitglied* left = km;
-    Klassenmitglied* right = TeilnehmerListe::Instance()->GetTeilnehmer(km->getId());
+    Klassenmitglied right = (TeilnehmerListe::Instance()->GetTeilnehmer(km->getId()));
 
 
-    if ( left->getVorname() != right->getVorname() )
+    if ( left->getVorname() != right.getVorname() )
     {
-        right->setVorname( left->getVorname() );
+        right.setVorname( left->getVorname() );
     }
 
-    if ( left->getNachname() != right->getNachname() )
+    if ( left->getNachname() != right.getNachname() )
     {
-        right->setNachname( left->getNachname() );
+        right.setNachname( left->getNachname() );
     }
 
-    if ( left->getGeburtsname() != right->getGeburtsname() )
+    if ( left->getGeburtsname() != right.getGeburtsname() )
     {
-        right->setGeburtsname( left->getGeburtsname() );
+        right.setGeburtsname( left->getGeburtsname() );
     }
 
-    if ( left->getEmail() != right->getEmail() )
+    if ( left->getEmail() != right.getEmail() )
     {
-        right->setEmail( left->getEmail() );
+        right.setEmail( left->getEmail() );
     }
 
-    if ( left->getKennwort() != right->getKennwort() )
+    if ( left->getKennwort() != right.getKennwort() )
     {
-        right->setKennwort( left->getKennwort() );
+        right.setKennwort( left->getKennwort() );
     }
 
-    if ( left->getTelnr() != right->getTelnr() )
+    if ( left->getTelnr() != right.getTelnr() )
     {
-        right->setTelnr( left->getTelnr() );
+        right.setTelnr( left->getTelnr() );
     }
 
-    if ( left->getAdresse() != right->getAdresse() )
+    if ( left->getAdresse() != right.getAdresse() )
     {
-        right->setAdresse( left->getAdresse() );
+        right.setAdresse( left->getAdresse() );
     }
 
     // schreibe Aenderungen aus TeilnehmerListe nach Datenbank
@@ -102,6 +102,12 @@ Klassenmitglied* TeilnehmerListe::GetTeilnehmer(int orgaId)
     }
 
     return kmOut;
+}
+
+
+Klassenmitglied TeilnehmerListe::GetTeilnehmerFromDatabase(int id)
+{
+    return tDAO.Get(id);
 }
 
 
