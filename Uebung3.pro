@@ -5,6 +5,8 @@
 #-------------------------------------------------
 
 QT       += core gui
+QT       += sql
+QT       += widgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -24,11 +26,34 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
+        loginview.cpp \
+        adresse.cpp \
+        aenderung.cpp \
+        datum.cpp \
+        hauptorganisator.cpp \
+        klassenmitglied.cpp \
         main.cpp \
-        mainwindow.cpp
+        organisator.cpp \
+        qtteilnehmerdao.cpp \
+        teilnehmerliste.cpp \
+        TeilnehmerListeView.cpp \
+        passwortaendernview.cpp \
 
 HEADERS += \
-        mainwindow.h
+    loginview.h \
+    adresse.h \
+    aenderung.h \
+    datum.h \
+    hauptorganisator.h \
+    klassenmitglied.h \
+    organisator.h \
+    qtteilnehmerdao.h \
+    teilnehmerliste.h \
+    TeilnehmerListeView.h \
+    passwortaendernview.h \
 
 FORMS += \
-        mainwindow.ui
+    loginview.ui \
+    TeilnehmerListeView.ui \
+    loginview.ui \
+    passwortaendernview.ui \
